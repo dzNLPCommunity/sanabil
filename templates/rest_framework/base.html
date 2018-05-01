@@ -1,0 +1,18 @@
+
+{% extends "rest_framework/base.html" %}
+{% load staticfiles %}
+
+{% block title %}{% if name %}{{ name }} – {% endif %}Sari3ou API{% endblock %}
+
+{% block branding %}
+    <a class='navbar-brand' rel="nofollow" href='/api/'>
+                    Sari3ou API
+                </a>
+{% endblock %}
+
+{#{% block bootstrap_theme %}#}
+{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" type="text/css"/>#}
+{#    <link rel="stylesheet" type="text/css" href="{% static 'rest_framework/css/bootstrap-tweaks.css' %}"/>#}
+{#{% endblock %}#}
+
+{#{% block bootstrap_navbar_variant %}{% endblock %}#}
