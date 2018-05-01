@@ -25,13 +25,22 @@ class NiveauScolaire(models.Model):
     label = models.CharField(max_length=100)
     order = models.IntegerField(unique=True)
 
+    def __str__(self):
+        return self.label
+
 
 class SituationFamiliale(models.Model):
     label = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.label
+
 
 class SituationProfessionelle(models.Model):
     label = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.label
 
 
 class Individual(models.Model):
@@ -51,7 +60,6 @@ class Individual(models.Model):
     association = models.ForeignKey(Association, null=True, on_delete=models.SET_NULL)
 
 
-
     class Meta:
         verbose_name_plural = "Nécessiteux"
 
@@ -66,14 +74,17 @@ class Family(models.Model):
 
 
 
+
 class CentreType(models.Model):
     label = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.label
 
 class Centre(models.Model):
     address = models.TextField()
     type = models.ForeignKey(CentreType, on_delete=models.CASCADE)
     associations = models.ManyToManyField(Association)
-
 
 
 class Necessiteux(Individual): #, Family, Centre
@@ -85,9 +96,16 @@ class Necessiteux(Individual): #, Family, Centre
         verbose_name_plural = "Nécessiteux"
 
 
+    def __str__(self):
+        return "{}. {}".format(self.id, self.nom)
+
+
 
 class BesoinType(models.Model):
     label = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.label
 
 class Besoin(models.Model):
     nom = models.CharField(max_length=100)
@@ -105,9 +123,14 @@ class Besoin(models.Model):
 class DonType(models.Model):
     label = models.CharField(max_length=100, unique=True)
 
+    def __str__(self):
+        return self.label
+
 class DonneurType(models.Model):
     label = models.CharField(max_length=100, unique=True)
 
+    def __str__(self):
+        return self.label
 
 class Donneur(models.Model):
     nom =  models.CharField(max_length=100)
@@ -116,12 +139,15 @@ class Donneur(models.Model):
     should_be_anonyme =  models.BooleanField(default = True)
     tel = models.CharField(max_length=20)
 
+    def __str__(self):
+        return "{} ({})".format(self.nom, self.type)
+
 
 class Don(models.Model):
     type  = models.ForeignKey(DonType, on_delete=models.CASCADE)
-    valuer = models.TextField()
-    recieving_date = models.IntegerField()
     description = models.TextField()
+    recieving_date = models.IntegerField()
+
 
     def __str__(self):
-        return
+        return "Don #{} ({})".format(self.id, self.type)
