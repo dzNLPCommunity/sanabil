@@ -49,9 +49,6 @@ router.register(r'base/age_categories', base_views.AgeCategoryViewSet)
 
 
 
-
-
-
 router.register(r'staff/roles', staff_views.RoleViewSet)
 router.register(r'staff/agents', staff_views.AgentViewSet)
 router.register(r'staff/logins', staff_views.LoginViewSet)
