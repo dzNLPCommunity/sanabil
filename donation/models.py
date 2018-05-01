@@ -20,6 +20,13 @@ class Association(models.Model):
 
 
 
+class Famille(models.Model):
+    nom = models.CharField(max_length=500)
+    nombre_enfant =  models.SmallIntegerField(default=0)
+
+    def __str__(self):
+        return "{} - {}".format(self.nom, self.responsable)
+
 class Individual(models.Model):
     nom = models.CharField(max_length=500)
     prenom = models.CharField(max_length=100)
@@ -35,8 +42,9 @@ class Individual(models.Model):
 
     est_orphelin = models.BooleanField()
 
-    association = models.ForeignKey(Association, null=True, on_delete=models.SET_NULL)
-
+    represent_famille = models.ForeignKey(Famille, null=True, on_delete=models.SET_NULL, related_name="responsable")
+    appartient_famille = models.ForeignKey(Famille, on_delete=models.CASCADE)
+    association = models.ForeignKey(Association, null=True, on_delete=models.SET_NULL, related_name="members")
 
     class Meta:
         verbose_name_plural = "Individuals"
@@ -46,22 +54,8 @@ class Individual(models.Model):
         return "{} {}".format(self.nom, self.prenom)
 
 
-
-class Famille(models.Model):
-    nom = models.CharField(max_length=500)
-    responsable = models.ForeignKey(Individual, on_delete=models.CASCADE)
-    nombre_enfant =  models.SmallIntegerField(default=0)
-
-    association = models.ForeignKey(Association, null=True, on_delete=models.SET_NULL)
-
-
-    def __str__(self):
-        return "{} - {}".format(self.nom, self.responsable)
-
-
 class Centre(models.Model):
     nom = models.CharField(max_length=500)
-
     address = models.TextField()
     type = models.ForeignKey(CentreType, on_delete=models.CASCADE)
     associations = models.ManyToManyField(Association)
@@ -109,7 +103,7 @@ class AideRecu(models.Model):
     type = models.ForeignKey(DonType, on_delete=models.CASCADE)
     description = models.TextField()
     date_reception = models.DateField()
-    donneur =  models.ForeignKey(Donneur)
+    donneur =  models.ForeignKey(Donneur, on_delete=models.CASCADE)
 
     def __str__(self):
         return "Don #{} ({})".format(self.id, self.type)
