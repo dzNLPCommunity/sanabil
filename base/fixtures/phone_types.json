@@ -1,5 +1,0 @@
-[
-  {"model": "base.phonetype", "pk": 1, "fields": {"name": "mobile", "icon": ""}},
-  {"model": "base.phonetype", "pk": 2, "fields": {"name": "home", "icon": ""}},
-  {"model": "base.phonetype", "pk": 3, "fields": {"name": "work", "icon": ""}}
-]

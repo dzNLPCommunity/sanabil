@@ -1,7 +1,7 @@
 from django.contrib.auth.models import Group, Permission
 from dynamic_rest.serializers import DynamicModelSerializer
 
-from base.models import  Wilaya, Commune, Gender, Parameter, PhoneType, AgeCategory
+from base.models import  Wilaya, Commune, Parameter
 
 
 
@@ -17,21 +17,10 @@ class CommuneSerializer(DynamicModelSerializer):
         model = Commune
         fields = '__all__'
 
-class GenderSerializer(DynamicModelSerializer):
-    class Meta:
-        model = Gender
-        fields = '__all__'
-
-
 
 class ParameterSerializer(DynamicModelSerializer):
     class Meta:
         model = Parameter
-        fields = '__all__'
-
-class PhoneTypeSerializer(DynamicModelSerializer):
-    class Meta:
-        model = PhoneType
         fields = '__all__'
 
 
@@ -44,10 +33,4 @@ class GroupSerializer(DynamicModelSerializer):
 class PermissionSerializer(DynamicModelSerializer):
     class Meta:
         model = Permission
-        fields = '__all__'
-
-
-class AgeCategorySerializer(DynamicModelSerializer):
-    class Meta:
-        model = AgeCategory
         fields = '__all__'

@@ -203,7 +203,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='besoin',
             name='type',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='donation.BesoinType'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='base.models.DonType'),
         ),
         migrations.AddField(
             model_name='besoin',

@@ -7,7 +7,6 @@ class Wilaya(models.Model):
     name = models.CharField(max_length=30)
     arabic_name = models.CharField(max_length=30, blank="")
 
-
     def __str__(self):
         return "{}. {}".format(self.id, self.name)
 
@@ -23,14 +22,6 @@ class Commune(models.Model):
         return "{}. {} - {} ".format(self.id, self.name, self.wilaya.name)
 
 
-class Gender(models.Model):
-    id = models.CharField(primary_key=True, max_length=1)
-    name = models.CharField(max_length=20)
-    icon = models.ImageField(blank="", null="")
-
-    def __str__(self):
-        return "{} ({})".format(self.name, self.id)
-
 class Parameter(models.Model):
     name = models.CharField(max_length=40, unique=True)
     value = models.CharField(max_length=100)
@@ -41,21 +32,45 @@ class Parameter(models.Model):
         return "{} ({})".format(self.name, self.type)
 
 
-class PhoneType(models.Model):
-    name = models.CharField(max_length=50)
-    icon = models.ImageField(blank=True, null=True)
+class NiveauScolaire(models.Model):
+    label = models.CharField(max_length=100)
+    order = models.IntegerField(unique=True)
 
     def __str__(self):
-        return "{}".format(self.name)
+        return self.label
 
 
-class AgeCategory(models.Model):
-    name = models.CharField(max_length=50)
-    lower_limit = models.PositiveSmallIntegerField(validators=[MaxValueValidator(120), MinValueValidator(13)])
-    upper_limit = models.PositiveSmallIntegerField(validators=[MaxValueValidator(120), MinValueValidator(13)])
+class SituationFamiliale(models.Model):
+    label = models.CharField(max_length=100)
 
     def __str__(self):
-        return "{} ({} - {})".format(self.name, self.lower_limit, self.upper_limit)
+        return self.label
 
-    class Meta:
-        verbose_name_plural = "Age categories"
+
+class SituationProfessionelle(models.Model):
+    label = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.label
+
+
+
+class CentreType(models.Model):
+    label = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.label
+
+
+class DonType(models.Model):
+    label = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.label
+
+
+class DonneurType(models.Model):
+    label = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.label

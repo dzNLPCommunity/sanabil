@@ -7,9 +7,9 @@ from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token as Rest_Token
 from rest_framework.response import Response
 
-from base.models import  Wilaya, Commune, Gender, Parameter, PhoneType, AgeCategory
-from base.serializers import  WilayaSerializer, CommuneSerializer, GenderSerializer, ParameterSerializer, \
-    PhoneTypeSerializer, GroupSerializer, PermissionSerializer, AgeCategorySerializer
+from base.models import  Wilaya, Commune, Parameter
+from base.serializers import  WilayaSerializer, CommuneSerializer, ParameterSerializer, \
+    GroupSerializer, PermissionSerializer
 
 
 def index(request):
@@ -36,19 +36,13 @@ class CommuneViewSet(DynamicModelViewSet):
     serializer_class = CommuneSerializer
 
 
-class GenderViewSet(DynamicModelViewSet):
-    queryset = Gender.objects.all()
-    serializer_class = GenderSerializer
+
 
 
 class ParameterViewSet(DynamicModelViewSet):
     queryset = Parameter.objects.all()
     serializer_class = ParameterSerializer
 
-
-class PhoneTypeViewSet(DynamicModelViewSet):
-    queryset = PhoneType.objects.all()
-    serializer_class = PhoneTypeSerializer
 
 
 class GroupViewSet(DynamicModelViewSet):
@@ -59,9 +53,5 @@ class GroupViewSet(DynamicModelViewSet):
 class PermissionViewSet(DynamicModelViewSet):
     queryset = Permission.objects.all()
     serializer_class = PermissionSerializer
-
-class AgeCategoryViewSet(DynamicModelViewSet):
-    queryset = AgeCategory.objects.all()
-    serializer_class = AgeCategorySerializer
 
 

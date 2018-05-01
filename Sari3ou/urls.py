@@ -40,20 +40,15 @@ router.register(r'auth/permissions', base_views.PermissionViewSet)
 
 
 
-router.register(r'base/genders', base_views.GenderViewSet)
 router.register(r'base/wilayas', base_views.WilayaViewSet)
 router.register(r'base/communes', base_views.CommuneViewSet)
 router.register(r'base/parameters', base_views.ParameterViewSet)
-router.register(r'base/phone_types', base_views.PhoneTypeViewSet)
-router.register(r'base/age_categories', base_views.AgeCategoryViewSet)
-
 
 
 router.register(r'staff/roles', staff_views.RoleViewSet)
 router.register(r'staff/agents', staff_views.AgentViewSet)
 router.register(r'staff/logins', staff_views.LoginViewSet)
 router.register(r'staff/users', staff_views.UserViewSet)
-
 
 
 router.register(r'notification/notifications', notification_views.NotificationViewSet)

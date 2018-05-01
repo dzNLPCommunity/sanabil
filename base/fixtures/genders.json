@@ -1,5 +1,0 @@
-[
-
-         { "model": "base.gender",     "pk": "M","fields": {  "name": "MALE"}},
-         { "model": "base.gender",     "pk": "F","fields": {  "name": "FEMALE"}}
-      ]

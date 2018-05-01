@@ -1,6 +1,7 @@
 from django.db import models
 
-from base.models import Commune, Gender
+from base.models import Commune, NiveauScolaire, SituationFamiliale, SituationProfessionelle, CentreType, \
+    DonType, DonneurType
 
 
 class Association(models.Model):
@@ -14,43 +15,20 @@ class Association(models.Model):
     facebook = models.CharField(max_length=500, blank=True)
     youtube = models.CharField(max_length=500, blank=True)
 
-
     def __str__(self):
         return "{}.{}".format(self.id, self.nom)
 
 
 
-
-class NiveauScolaire(models.Model):
-    label = models.CharField(max_length=100)
-    order = models.IntegerField(unique=True)
-
-    def __str__(self):
-        return self.label
-
-
-class SituationFamiliale(models.Model):
-    label = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.label
-
-
-class SituationProfessionelle(models.Model):
-    label = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.label
-
-
 class Individual(models.Model):
+    nom = models.CharField(max_length=500)
     prenom = models.CharField(max_length=100)
     date_de_naissance = models.DateField()
-    sexe = models.ForeignKey(Gender, on_delete=models.CASCADE)
+    sexe = models.CharField(max_length=1, choices = [("F", "Female"), ("M", "Male")])
     niveau_scolaire = models.ForeignKey(NiveauScolaire, on_delete=models.CASCADE)
     tel = models.CharField(max_length=20)
     pointure = models.IntegerField() # TODO validation 20 - 50
-    taille = models.CharField(max_length=100, blank=True)
+    taille = models.CharField(max_length=100)
     situation_familiale = models.ForeignKey(SituationFamiliale, on_delete=models.CASCADE)
     situation_professionelle = models.ForeignKey(SituationProfessionelle, on_delete=models.CASCADE)
 
@@ -61,93 +39,80 @@ class Individual(models.Model):
 
 
     class Meta:
-        verbose_name_plural = "Nécessiteux"
+        verbose_name_plural = "Individuals"
+
+
+    def __str__(self):
+        return "{} {}".format(self.nom, self.prenom)
 
 
 
-class Family(models.Model):
+class Famille(models.Model):
+    nom = models.CharField(max_length=500)
     responsable = models.ForeignKey(Individual, on_delete=models.CASCADE)
-    addresse = models.CharField(max_length=500)
     nombre_enfant =  models.SmallIntegerField(default=0)
 
     association = models.ForeignKey(Association, null=True, on_delete=models.SET_NULL)
 
 
-
-
-class CentreType(models.Model):
-    label = models.CharField(max_length=100, unique=True)
-
     def __str__(self):
-        return self.label
+        return "{} - {}".format(self.nom, self.responsable)
+
 
 class Centre(models.Model):
+    nom = models.CharField(max_length=500)
+
     address = models.TextField()
     type = models.ForeignKey(CentreType, on_delete=models.CASCADE)
     associations = models.ManyToManyField(Association)
-
-
-class Necessiteux(Individual): #, Family, Centre
-    nom = models.CharField(max_length=500)
-
-    degree_de_necissite = models.SmallIntegerField()
-
-    class Meta:
-        verbose_name_plural = "Nécessiteux"
-
-
-    def __str__(self):
-        return "{}. {}".format(self.id, self.nom)
-
-
-
-class BesoinType(models.Model):
-    label = models.CharField(max_length=100, unique=True)
-
-    def __str__(self):
-        return self.label
-
-class Besoin(models.Model):
-    nom = models.CharField(max_length=100)
-    description = models.TextField()
-    type = models.ForeignKey(BesoinType, on_delete=models.CASCADE)
-    necessiteux = models.ManyToManyField(Necessiteux)
-    est_urgent = models.BooleanField(default=False)
-    date_limite = models.DateField()
-    montant = models.IntegerField(default=0)
-    planification_date = models.DateField()
-    giving_date = models.DateField(blank=True, null=True)
-    is_don_given = models.BooleanField(default=False)
-
-
-class DonType(models.Model):
-    label = models.CharField(max_length=100, unique=True)
-
-    def __str__(self):
-        return self.label
-
-class DonneurType(models.Model):
-    label = models.CharField(max_length=100, unique=True)
-
-    def __str__(self):
-        return self.label
-
-class Donneur(models.Model):
-    nom =  models.CharField(max_length=100)
-    type = models.ForeignKey(DonneurType, on_delete=models.CASCADE)
-    est_active = models.BooleanField(default = False)
-    should_be_anonyme =  models.BooleanField(default = True)
-    tel = models.CharField(max_length=20)
 
     def __str__(self):
         return "{} ({})".format(self.nom, self.type)
 
 
-class Don(models.Model):
-    type  = models.ForeignKey(DonType, on_delete=models.CASCADE)
-    description = models.TextField()
-    recieving_date = models.IntegerField()
+class Necessiteux(Individual): #, Family, Centre
+    degre_necessite = models.SmallIntegerField(default=0)
 
+    class Meta:
+        verbose_name_plural = "Nécessiteux"
+
+    def __str__(self):
+        return "{}. {}".format(self.id, self.nom)
+
+
+class Besoin(models.Model):
+    nom = models.CharField(max_length=100)
+    description = models.TextField()
+    type = models.ForeignKey(DonType, on_delete=models.CASCADE)
+    necessiteux = models.ManyToManyField(Necessiteux)
+    est_urgent = models.BooleanField(default=False)
+    date_limite = models.DateField()
+    montant = models.IntegerField(default=0)
+    date_planification = models.DateField()
+    date_remise_don = models.DateField(blank=True, null=True)
+    besoin_satisfait = models.BooleanField(default=False)
+
+
+
+class Donneur(models.Model):
+    nom =  models.CharField(max_length=100)
+    type = models.ForeignKey(DonneurType, on_delete=models.CASCADE)
+    est_active = models.BooleanField(default = False)
+    anonyme =  models.BooleanField(default = True)
+    tel = models.CharField(max_length=20, blank=True)
+
+    def __str__(self):
+        return "{} ({})".format(self.nom, self.type)
+
+
+class AideRecu(models.Model):
+    type = models.ForeignKey(DonType, on_delete=models.CASCADE)
+    description = models.TextField()
+    date_reception = models.DateField()
+    donneur =  models.ForeignKey(Donneur)
 
     def __str__(self):
         return "Don #{} ({})".format(self.id, self.type)
+
+
+
