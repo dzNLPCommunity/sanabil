@@ -32,10 +32,9 @@ INSTALLED_APPS = [
     'dynamic_rest',
     'rest_framework.authtoken',
     "fcm_django",
-
     'notification',
     'staff',
-    'donation',
+    'charity',
     'base',
     'debug_toolbar',
 ]
@@ -53,7 +52,7 @@ MIDDLEWARE = [
 
 ]
 
-ROOT_URLCONF = 'Sari3ou.urls'
+ROOT_URLCONF = 'Sanabil.urls'
 
 TEMPLATES = [
     {
@@ -72,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Sari3ou.wsgi.application'
+WSGI_APPLICATION = 'Sanabil.wsgi.application'
 
 
 
@@ -158,7 +157,7 @@ DEBUG_TOOLBAR_CONFIG = {
 
 SUIT_CONFIG = {
     # header
-    'ADMIN_NAME': 'Sari3ou',
+    'ADMIN_NAME': 'Sanabil',
     # 'HEADER_DATE_FORMAT': 'l, j. F Y',
     # 'HEADER_TIME_FORMAT': 'H:i',
 
@@ -187,5 +186,5 @@ SUIT_CONFIG = {
     # 'LIST_PER_PAGE': 15
 }
 
-AUTH_USER_MODEL = 'staff.User'
+AUTH_USER_MODEL = 'staff.Membre'
 

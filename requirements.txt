@@ -28,4 +28,4 @@ django-mysql
 dj_database_url
 gunicorn
 django_extensions
-psycopg2
+psycopg2-binary

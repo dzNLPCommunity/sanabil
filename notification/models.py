@@ -1,11 +1,11 @@
 from django.db import models
 from fcm_django.models import FCMDevice
 
-from staff.models import User
+from staff.models import Membre
 
 
 class Notification(models.Model):
-    utilisateur = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    membre = models.ForeignKey(Membre, on_delete=models.CASCADE, blank=True, null=True)
     icon = models.ImageField(blank=True, null=True)
     texte = models.CharField(max_length=200)
     titre = models.CharField(max_length=200)
@@ -21,8 +21,8 @@ class Notification(models.Model):
 
     def save(self, *args, **kwargs):
         try:
-            if self.utilisateur:
-                device = FCMDevice.objects.get(user_id=self.utilisateur.id, active=True)
+            if self.membre:
+                device = FCMDevice.objects.get(user_id=self.membre.id, active=True)
                 print(device.registration_id)
                 device.send_message(title=self.titre, body=self.texte, sound=True, data={"type": self.type})
             else:

@@ -2,13 +2,14 @@ from django.db import models
 
 from base.models import Commune, NiveauScolaire, SituationFamiliale, SituationProfessionelle, CentreType, \
     DonType, DonneurType
-
+from staff.models import Membre
 
 class Association(models.Model):
+    responsable = models.ForeignKey(Membre, on_delete=models.SET_NULL, null=True, limit_choices_to=("profile", 2))
     nom = models.CharField(max_length=500, unique=True)
     surnom = models.CharField(max_length=100, unique=True, blank=True)
-    tel1 = models.CharField(max_length=20,unique=True)
-    tel2 = models.CharField(max_length=20,blank=True)
+    telephone = models.CharField(max_length=20,unique=True)
+    telephone_2 = models.CharField(max_length=20,blank=True)
     address = models.TextField()
     commune = models.ForeignKey(Commune, on_delete=models.SET_NULL,null=True)
     website = models.CharField(max_length=500, blank=True)
@@ -19,15 +20,14 @@ class Association(models.Model):
         return "{}.{}".format(self.id, self.nom)
 
 
-
 class Famille(models.Model):
     nom = models.CharField(max_length=500)
     nombre_enfant =  models.SmallIntegerField(default=0)
 
     def __str__(self):
-        return "{} - {}".format(self.nom, self.responsable)
+        return "{}".format(self.nom)
 
-class Individual(models.Model):
+class Necessiteux(models.Model):
     nom = models.CharField(max_length=500)
     prenom = models.CharField(max_length=100)
     date_de_naissance = models.DateField()
@@ -42,12 +42,16 @@ class Individual(models.Model):
 
     est_orphelin = models.BooleanField()
 
-    represent_famille = models.ForeignKey(Famille, null=True, on_delete=models.SET_NULL, related_name="responsable")
     appartient_famille = models.ForeignKey(Famille, on_delete=models.CASCADE)
+    represent_famille = models.BooleanField(default=False)
     association = models.ForeignKey(Association, null=True, on_delete=models.SET_NULL, related_name="members")
+    degre_necessite = models.SmallIntegerField(default=0)
+
+
+    archive = models.BooleanField(default=False)
 
     class Meta:
-        verbose_name_plural = "Individuals"
+        verbose_name_plural = "Necessiteux"
 
 
     def __str__(self):
@@ -63,17 +67,6 @@ class Centre(models.Model):
     def __str__(self):
         return "{} ({})".format(self.nom, self.type)
 
-
-class Necessiteux(Individual): #, Family, Centre
-    degre_necessite = models.SmallIntegerField(default=0)
-
-    class Meta:
-        verbose_name_plural = "Nécessiteux"
-
-    def __str__(self):
-        return "{}. {}".format(self.id, self.nom)
-
-
 class Besoin(models.Model):
     nom = models.CharField(max_length=100)
     description = models.TextField()
@@ -85,8 +78,7 @@ class Besoin(models.Model):
     date_planification = models.DateField()
     date_remise_don = models.DateField(blank=True, null=True)
     besoin_satisfait = models.BooleanField(default=False)
-
-
+    association = models.ForeignKey(Association, on_delete=models.CASCADE)
 
 class Donneur(models.Model):
     nom =  models.CharField(max_length=100)
@@ -94,6 +86,8 @@ class Donneur(models.Model):
     est_active = models.BooleanField(default = False)
     anonyme =  models.BooleanField(default = True)
     tel = models.CharField(max_length=20, blank=True)
+    association = models.ForeignKey(Association, on_delete=models.CASCADE)
+
 
     def __str__(self):
         return "{} ({})".format(self.nom, self.type)
@@ -104,6 +98,7 @@ class AideRecu(models.Model):
     description = models.TextField()
     date_reception = models.DateField()
     donneur =  models.ForeignKey(Donneur, on_delete=models.CASCADE)
+    association = models.ForeignKey(Association, on_delete=models.CASCADE)
 
     def __str__(self):
         return "Don #{} ({})".format(self.id, self.type)

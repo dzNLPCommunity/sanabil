@@ -29,7 +29,7 @@ from staff import views  as staff_views
 from notification import views as notification_views
 
 
-from Sari3ou import settings
+from Sanabil import settings
 
 
 router = routers.DefaultRouter()
@@ -45,10 +45,8 @@ router.register(r'base/communes', base_views.CommuneViewSet)
 router.register(r'base/parameters', base_views.ParameterViewSet)
 
 
-router.register(r'staff/roles', staff_views.RoleViewSet)
 router.register(r'staff/agents', staff_views.AgentViewSet)
 router.register(r'staff/logins', staff_views.LoginViewSet)
-router.register(r'staff/users', staff_views.UserViewSet)
 
 
 router.register(r'notification/notifications', notification_views.NotificationViewSet)
