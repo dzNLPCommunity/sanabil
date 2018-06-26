@@ -126,7 +126,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
-        'PATH': os.path.join(os.path.dirname(__file__), 'indexes/ireport'),
+        'PATH': os.path.join(os.path.dirname(__file__), 'indexes/sanabil'),
     },
 }
 
