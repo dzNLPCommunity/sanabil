@@ -1,1 +1,1 @@
-web: gunicorn Sari3ou.wsgi
+web: gunicorn Sanabil.wsgi
