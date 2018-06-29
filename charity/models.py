@@ -5,7 +5,7 @@ from base.models import Commune, NiveauScolaire, SituationFamiliale, SituationPr
 from staff.models import Membre
 
 class Association(models.Model):
-    responsable = models.ForeignKey(Membre, on_delete=models.SET_NULL, null=True, limit_choices_to=("profile", 2))
+    responsable = models.ForeignKey(Membre, on_delete=models.SET_NULL, null=True, limit_choices_to={ "profile", 2 })
     nom = models.CharField(max_length=500, unique=True)
     surnom = models.CharField(max_length=100, unique=True, blank=True)
     telephone = models.CharField(max_length=20,unique=True)
