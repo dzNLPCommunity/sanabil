@@ -14,7 +14,7 @@ SECRET_KEY = '1tx6ee0l)64l68tl*6akdesms%uz8noqcrarl-2s1_z*^bgw(r'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', False)
 
-ALLOWED_HOSTS = ['127.0.0.1','sanabil.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1','sanabil.herokuapp.com', 'www.sanabil.org']
 
 
 # Application definition

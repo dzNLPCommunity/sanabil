@@ -10,4 +10,4 @@ for model in donationapp.get_models():
 
 
 admin.site.site_header = "Sanabil Administration"
-admin.site.admin_name ='Sila DZ'
+admin.site.admin_name ='Unchained'
