@@ -82,7 +82,7 @@ class Migration(migrations.Migration):
                 ('id', models.IntegerField(primary_key=True, serialize=False)),
                 ('name', models.CharField(max_length=30)),
                 ('arabic_name', models.CharField(blank='', max_length=30)),
-            ],
+            ]
         ),
         migrations.AddField(
             model_name='commune',

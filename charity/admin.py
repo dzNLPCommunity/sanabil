@@ -4,12 +4,6 @@ from django.contrib import admin
 from charity.models import Association, Famille, Necessiteux, Centre, Besoin, Donneur, AideRecu
 
 
-@admin.register(Association)
-class AssociationAdmin(admin.ModelAdmin):
-    list_display = ['nom', 'surnom', 'telephone', 'commune', 'website', 'responsable']
-    list_display_links = ['nom','surnom']
-    search_fields = ['nom', 'surnom', 'telephone']
-    list_filter = ['commune__wilaya']
 
 @admin.register(Famille)
 class FamilleAdmin(admin.ModelAdmin):
