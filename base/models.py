@@ -14,9 +14,7 @@ class Commune(models.Model):
     id = models.IntegerField(primary_key=True)
     wilaya = models.ForeignKey(Wilaya, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
-    post_code = models.IntegerField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    postcode = models.IntegerField()
 
     def __str__(self):
         return "{}. {} - {} ".format(self.id, self.name, self.wilaya.name)
