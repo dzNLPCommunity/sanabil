@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %} Sanabil - سنابل {% endblock %}
+
+
+{% block content %}
+
+    {{ stat }}
+
+<br/>
+    <a href="{% url 'association-list' %}">
+    - associations
+    </a>
+
+    <br/>
+    <a href="{% url 'necessiteux-list' %}">
+    - necessiteux
+    </a>
+
+
+        <br/>
+    <a href="{% url 'aiderecu-list' %}">
+    - aides
+    </a>
+
+        <br/>
+    <a href="{% url 'besoin-list' %}">
+    - besoins
+    </a>
+
+
+        <br/>
+    <a href="{% url 'help-page' %}">
+    - help
+    </a>
+
+            <br/>
+    <a href="{% url 'contact-page' %}">
+    - contact
+    </a>
+
+     <br/>
+    <a href="{% url 'contact-success-page' %}">
+    - success
+    </a>
+{% endblock %}

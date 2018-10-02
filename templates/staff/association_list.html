@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %} association {% endblock %}
+
+
+{% block content %}
+<ul>
+{% for association in object_list %}
+    <li>{{ association }}</li>
+{% empty %}
+    <li>No association yet.</li>
+{% endfor %}
+</ul>
+{% endblock %}
+

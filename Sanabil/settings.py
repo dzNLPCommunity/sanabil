@@ -159,3 +159,6 @@ SUIT_CONFIG = {
     # 'LIST_PER_PAGE': 15
 }
 
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+

@@ -8,6 +8,8 @@ from staff.models import Membre, Association
 class Famille(models.Model):
     nom = models.CharField(max_length=500)
     nombre_enfant =  models.SmallIntegerField(default=0, blank=True, null=True)
+    archivé = models.BooleanField(default=False)
+
 
     def __str__(self):
         return "{}".format(self.nom)

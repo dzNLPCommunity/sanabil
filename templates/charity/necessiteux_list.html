@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} necess  {% endblock %}
+
+
+{% block content %}
+<ul>
+{% for necess in object_list %}
+    <li>{{ necess }}</li>
+{% empty %}
+    <li>No necess yet.</li>
+{% endfor %}
+</ul>
+{% endblock %}
+
+
