@@ -1,12 +1,99 @@
 {% extends 'base.html' %}
-
-{% block title %} Help page {% endblock %}
-
-
+{% block title %} Qui sommes nous?? {% endblock %}
 {% block content %}
+    <div class="ui vertical stripe segment">
+        <div class="ui text center aligned container">
+            <div class="ui vertical stripe segment">
+                <div class="ui middle aligned stackable grid container">
+                    <div class="row">
+                        <div class="eight wide column">
+                            <h1 class="ui horizontal header divider">
+                                What is our vesion?
+                            </h1>
+                            <p>
+                                The other image includes a logo. Nam facilisis mauris ut eros feugiat, quis mollis risus
+                                eleifend. Nunc finibus nibh
+                                accumsan,
+                                fringilla purus non, consequa lorem. Sed ullamcorper aliquam.
+                            </p>
+                        </div>
+                        <div class="six wide right floated column">
+                            <img class="ui large  image"
+                                 src="https://www.wafb.com/pb/resources/images/weather/weather-condition-icons/400x400/97_daily_forecast.png"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h1 class="ui horizontal header divider">
+                <a>Our gallery</a>
+            </h1>
+            <p>
+            <div class="row">
+                <div id="gallery">
+                    <div class="grid-item">
+                        <div class="hovereffect"><img src="https://placeimg.com/250/200/any">
+                            <div class="overlay">
+                                <h2>Image Title</h2><a class="info" href="#">See more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <div class="hovereffect"><img src="https://placeimg.com/250/300/any">
+                            <div class="overlay">
+                                <h2>Image Title</h2><a class="info" href="#">See more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <div class="hovereffect"><img src="https://placeimg.com/250/150/any">
+                            <div class="overlay">
+                                <h2>Image Title</h2><a class="info" href="#">See more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <div class="hovereffect"><img src="https://placeimg.com/250/220/any">
+                            <div class="overlay">
+                                <h2>Image Title</h2><a class="info" href="#">See more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <div class="hovereffect"><img src="https://placeimg.com/200/150/any">
+                            <div class="overlay">
+                                <h2>Image Title</h2><a class="info" href="#">See more</a>
+                            </div>
+                        </div>
+                    </div>
 
-    You can help by ....
-    ,,,,
-    ,,
+                </div>
+            </div>
+            </p>
+            <h1 class="ui horizontal header divider">
+                <a> Our team?</a>
+            </h1>
+            <p>
+                Our goal is to do that and that if you are please contact. We will reply you the soonest possible.
+            </p>
+            <a href="{% url 'contact-page' %}" class="ui large teal button">Join us</a>
+        </div>
+    </div>
+
 
 {% endblock %}
+
+{% block extra_js %}
+    $(document).ready(function () {
+    // init Masonry
+    var $grid = $('#gallery').masonry({
+    // options...
+    itemSelector: '.grid-item',
+    isFitWidth: true,
+    columnWidth: 1
+    });
+    // layout Masonry after each image loads
+    $grid.imagesLoaded().progress(function () {
+    $grid.masonry('layout');
+    });
+    });
+{% endblock extra_js %}

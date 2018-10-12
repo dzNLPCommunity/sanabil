@@ -4,13 +4,103 @@
 
 
 {% block content %}
-<ul>
-{% for necess in object_list %}
-    <li>{{ necess }}</li>
-{% empty %}
-    <li>No necess yet.</li>
-{% endfor %}
-</ul>
+    <div class="ui vertical stripe segment">
+        <div class="ui text center aligned container">
+            <h1 class="ui horizontal header divider">
+                <a>Statistiques sur nos nécessiteux</a>
+            </h1>
+            <p>
+            <div class="ui statistics">
+                <div class="huge olive statistic">
+                    <div class="value">
+                        22
+                    </div>
+                    <div class="label">
+                        Nécessiteux
+                    </div>
+                </div>
+                <div class="huge brown statistic">
+                    <div class="value">
+                        31,200
+                    </div>
+                    <div class="label">
+                        Familles
+                    </div>
+                </div>
+                <div class="huge orange statistic">
+                    <div class="value">
+                        22
+                    </div>
+                    <div class="label">
+                        Enfants
+                    </div>
+                </div>
+            </div>
+            </p>
+            <div class="ui equal width stackable internally celled grid">
+                <div class="center aligned row">
+                    <div class="column">
+                        <h4>
+                            La distribution des nécessiteux par sex
+                        </h4>
+                        <p class="needs-charts">
+                            <canvas id="needs-charts-gender" width="200" height="300"></canvas>
+                        </p>
+                    </div>
+                    <div class="column">
+                        <h4>
+                            La distribution des nécessiteux par tranche d'âge
+                        </h4>
+                        <p>
+                            <canvas id="needs-charts-age" width="400" height="400"></canvas>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <h1 class="ui horizontal header divider">
+                <a> Interested?</a>
+            </h1>
+            <h3 class="ui header">
+                If you are interested in helping us?
+            </h3>
+            <p>
+                Our goal is to do that and that if you are please contact. We will reply you the soonest possible.
+            </p>
+            <a href="{% url 'contact-page' %}" class="ui large teal button">Contact us</a>
+        </div>
+    </div>
 {% endblock %}
+{% block extra_js %}
+    var ctx = document.getElementById('needs-charts-gender').getContext('2d');
+    var chart = new Chart(ctx, {
+    type: 'doughnut',
+    // data are percentages
+    data: {
+    labels: ["Femmes", "Hommes"],
+    datasets: [{
+    label: "Les nécessiteux par sex",
+    backgroundColor: ['rgb(255, 99, 132)','rgb(63, 173, 255)'],
+    borderColor:  ['rgb(255, 99, 132)','rgb(63, 173, 255)'],
+    data: [80, 30],
+    }]
+    },
+    options: {}
+    });
+    var ctx_age = document.getElementById('needs-charts-age').getContext('2d');
+    var chart_age = new Chart(ctx_age, {
+    type: 'bar',
+    // data are percentages
+    data: {
+    labels: ["Enfants", "Ados","Jeunes","Adults","Seniors"],
+    datasets: [{
+    label: "Les nécessiteux par age",
+    backgroundColor: ['olive', 'lightsalmon', 'lightblue', 'lightcoral', 'teal'],
+    borderColor:  ['olive', 'lightsalmon', 'lightblue', 'lightcoral', 'teal'],
+    data: [30, 70, 23, 46, 78],
+    }]
+    },
+    options: {}
+    });
+{% endblock extra_js %}
 
 

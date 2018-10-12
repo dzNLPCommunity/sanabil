@@ -4,12 +4,154 @@
 
 
 {% block content %}
-<ul>
-{% for besoin in object_list %}
-    <li>{{ besoin }}</li>
-{% empty %}
-    <li>No besoin yet.</li>
-{% endfor %}
-</ul>
+    <div class="ui main container">
+        <p></p>
+        <div class="ui raised segment">
+            <table id="needs-table" class="ui compact selectable striped celled table" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Association</th>
+                    <th>Centre</th>
+                    <th>Montant</th>
+                    <th>Urgent</th>
+                    <th>Date limite</th>
+                    <th>Satisfait</th>
+                    <th>See more details</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for besoin in object_list %}
+                    <tr>
+                        <td>
+                            {{ besoin.nom }}</td>
+                        <td>
+                            {{ besoin.association.nom |default:"/" }}
+                        </td>
+                        <td>
+                            {{ besoin.centre.nom |default:"/" }}
+                        </td>
+                        <td>
+                            <div class="ui big label">
+                                {{ besoin.montant }} <b>DA</b>
+                            </div>
+                        </td>
+                        <td class="actions">
+                            <i class="large icon
+                                    {% if besoin.est_urgent %}check teal{% else %} times red {% endif %}">
+                            </i>
+                        </td>
+                        <td>
+                            {{ besoin.date_limite |default:"/" }}
+                        </td>
+                        <td class="actions">
+                            <i class="large icon
+                                    {% if besoin.est_satisfait %}check teal{% else %} times red {% endif %}">
+                            </i>
+                        </td>
+                        <td>
+                            <div class="ui teal right ribbon label">
+                                <i class="utensils icon"></i>{{ besoin.type.labels | default:"Type of need" }}
+                            </div>
+                            <a href="#" class="detail-click zoom-icon">
+                                <i class="large teal zoom icon"></i>
+                            </a>
+
+                        </td>
+                    </tr>
+                    <div id="besoin-detail" class="ui modal">
+                        <i class="close icon"></i>
+                        <div class="header">
+                            Détail du besoin
+                        </div>
+                        <div class="image content">
+                            <div class="description">
+                                <div class="ui header">{{ besoin.nom }}</div>
+                                <p>
+                                <div class="ui relaxed divided list horizontal">
+                                    <div class="item">
+                                        <div class="content">
+                                            <a class="header">Description</a>
+                                            <div class="description">
+                                                {{ besoin.description }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="content">
+                                            <a class="header">Association</a>
+                                            <div class="description">
+                                                <ul>
+                                                    <li value="-"><b>Nom:</b> {{ besoin.association.nom | default:"/" }}
+                                                    </li>
+                                                    <li value="-">
+                                                        <b>Commune:</b> {{ besoin.association.commune | default:"/" }}
+                                                    </li>
+                                                    <li value="-">
+                                                        <b>Surnom:</b> {{ besoin.association.surnom | default:"/" }}
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="content">
+                                            <a class="header teal">Centre</a>
+                                            <div class="description">
+                                                <ul>
+                                                    <li value="-"><b>Nom:</b> {{ besoin.centre.nom | default:"/" }}</li>
+                                                    <li value="-"><b>Commune:</b> {{ besoin.centre.type | default:"/" }}
+                                                    </li>
+                                                    <li value="-">
+                                                        <b>Surnom:</b> {{ besoin.centre.address | default:"/" }}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="content">
+                                            <a class="header">Details</a>
+                                            <div class="description">
+                                                <ul>
+                                                    <li value="-"><b>Date
+                                                        limite:</b> {{ besoin.date_limite | default:"/" }}</li>
+                                                    <li value="-"><b>Date de
+                                                        planification:</b> {{ besoin.date_planification | default:"/" }}
+                                                    </li>
+                                                    <li value="-"><b>Date de remise de
+                                                        don:</b> {{ besoin.date_remise_don | default:"/" }}</li>
+                                                    <li value="-"><b>Montant:</b> {{ besoin.montant | default:"/" }} DA
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <div class="ui black deny button">
+                                Close
+                            </div>
+                            <a href="{% url 'contact-page' %}" class="ui teal right labeled icon button">
+                                Donate
+                                <i class="dullar icon"></i>
+                            </a>
+                        </div>
+                    </div>
+                {% empty %}
+                    <td>No besoin added yet.</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}
 

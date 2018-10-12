@@ -8,7 +8,6 @@ dynamic-rest
 django-rest-swagger
 markdown
 django-filter
-https://github.com/darklow/django-suit/tarball/v2
 dj-database-url
 whitenoise
 django-annoying
@@ -29,3 +28,7 @@ dj_database_url
 gunicorn
 django_extensions
 psycopg2-binary
+libsass
+django-compressor
+django-sass-processor
+jet

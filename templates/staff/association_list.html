@@ -4,12 +4,69 @@
 
 
 {% block content %}
-<ul>
-{% for association in object_list %}
-    <li>{{ association }}</li>
-{% empty %}
-    <li>No association yet.</li>
-{% endfor %}
-</ul>
+    <div class="ui main container">
+        <p></p>
+        <div class="ui raised segment">
+            <table id="associations-table" class="ui compact selectable striped celled table" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Surnom</th>
+                    <th>Téléphone</th>
+                    <th>Commune</th>
+                    <th>Address</th>
+                    <th>Social networks</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for association in object_list %}
+                    <tr>
+                        <td>{{ association.nom }}</td>
+                        <td>
+                            {{ association.surnom |default:"/" }}
+                        </td>
+                        <td>{{ association.telephone }}
+                            {% if association.telephone_2 != None %}
+                                <br/>
+                                {{ association.telephone_2 }}
+                            {% endif %}
+                        </td>
+                        <td>{{ association.commune }}</td>
+                        <td>{{ association.address }}</td>
+                        <td class="actions">
+                            <div class="row">
+                                <a href="{{ association.website }}" target="_blank" class="ui
+                                    {% if association.website == None %}disabled{% endif %}
+                                       tiny circular globe icon button" >
+                                    <i class="globe icon"></i>
+                                </a>
+                                <a href="{{ association.facebook }}" target="_blank" class="ui
+                                 {% if association.facebook == None %}disabled{% endif %}
+                                tiny circular facebook icon button">
+                                    <i class="facebook icon"></i>
+                                </a>
+                                <a href="{{ association.youtube }}" target="_blank" class="ui
+                                  {% if association.youtube == None %}disabled{% endif %}
+                                tiny circular youtube icon button">
+                                    <i class="youtube icon"></i>
+                                </a>
+                            </div>
+
+
+                        </td>
+
+                    </tr>
+                {% empty %}
+                    <td>No association added yet.</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}
 

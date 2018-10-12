@@ -13,6 +13,7 @@ from staff.views import AssociationListView
 
 
 urlpatterns = [
+    url(r'^jet/', include('jet.urls', 'jet')),
     url(r'^admin/', admin.site.urls),
     url(r'^media/(?P<path>.*)$', serve, { 'document_root': settings.MEDIA_ROOT}),
     url(r'^associations/?', AssociationListView.as_view(), name='association-list'),

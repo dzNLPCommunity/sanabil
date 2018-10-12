@@ -1,0 +1,55 @@
+<div class="ui large top menu">
+    <div class="ui container">
+        <a class="item" href="/">
+            Accueil
+        </a>
+        <a class="item {% if request.resolver_match.url_name == 'association-list' %}active{% endif %}"
+           href="{% url 'association-list' %}">
+            Associations
+        </a>
+        <a class="item {% if request.resolver_match.url_name == 'besoin-list' %}active{% endif %}"
+           href="{% url 'besoin-list' %}">
+            Besoins
+        </a>
+        <a class="item {% if request.resolver_match.url_name == 'necessiteux-list' %}active{% endif %}"
+           href="{% url 'necessiteux-list' %}">
+            Nécessiteux
+        </a>
+        <a class="item {% if request.resolver_match.url_name == 'help-page' %}active{% endif %}"
+           href="{% url 'help-page' %}">
+            Qui sommes nous?
+        </a>
+        <div class="right menu">
+            <div class="item">
+                <a class="ui  teal button" href="{% url 'contact-page' %}">
+                    Contact us
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Sidebar Menu-->
+<div class="ui vertical inverted sidebar menu">
+    <a class="item" href="/">
+        Accueil
+    </a>
+    <a class="item {% if request.resolver_match.url_name == 'association-list' %}active{% endif %}"
+       href="{% url 'association-list' %}">
+        Associations
+    </a>
+    <a class="item {% if request.resolver_match.url_name == 'besoin-list' %}active{% endif %}"
+       href="{% url 'besoin-list' %}">
+        Besoins
+    </a>
+    <a class="item {% if request.resolver_match.url_name == 'necessiteux-list' %}active{% endif %}"
+       href="{% url 'necessiteux-list' %}">
+        Nécessiteux
+    </a>
+    <a class="item {% if request.resolver_match.url_name == 'help-page' %}active{% endif %}"
+       href="{% url 'help-page' %}">
+        Qui sommes nous?
+    </a>
+    <a class="ui  teal button" href="{% url 'contact-page' %}">
+        Contact us
+    </a>
+</div>
