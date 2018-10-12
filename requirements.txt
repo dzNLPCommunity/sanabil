@@ -31,4 +31,4 @@ psycopg2-binary
 libsass
 django-compressor
 django-sass-processor
-jet
+django-jet
