@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'Scheherazade';
-  src: url("../../fonts/ScheherazadeRegOT.ttf"); }
+  src: url("/static/fonts/ScheherazadeRegOT.ttf"); }
 
 @font-face {
   font-family: 'ArabeyesQr';
-  src: url("../../fonts/arabeyes-qr.ttf"); }
+  src: url("/static/fonts/arabeyes-qr.ttf"); }
 
 body::-webkit-scrollbar {
   width: 10px;
