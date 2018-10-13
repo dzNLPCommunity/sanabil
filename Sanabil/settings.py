@@ -8,7 +8,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', False)
+DEBUG = os.environ.get('DEBUG', True)
 
 
 if DEBUG:
@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'rest_framework',
     'sass_processor',
     'django.contrib.staticfiles',
     'staff',
@@ -134,6 +135,38 @@ def show_toolbar(request):
 DEBUG_TOOLBAR_CONFIG = {
     "SHOW_TOOLBAR_CALLBACK" : show_toolbar,
 }
+#
+#
+# SUIT_CONFIG = {
+#     # header
+#     'ADMIN_NAME': 'Sanabil',
+#     # 'HEADER_DATE_FORMAT': 'l, j. F Y',
+#     # 'HEADER_TIME_FORMAT': 'H:i',
+#
+#     # forms
+#     # 'SHOW_REQUIRED_ASTERISK': True,  # Default True
+#     # 'CONFIRM_UNSAVED_CHANGES': True, # Default True
+#
+#     # menu
+#
+#     'SEARCH_URL': '/admin/',
+#     'MENU_ICONS': {
+#         'sites': 'icon-leaf',
+#         'auth': 'icon-lock',
+#         'industry': 'icon-list-alt',
+#     },
+#     # 'MENU_OPEN_FIRST_CHILD': True, # Default True
+#     'MENU_EXCLUDE': ( 'auth', 'authtoken'),
+#     # 'MENU': (
+#     #     'sites',
+#     #     {'configuration': 'auth', 'icon':'icon-lock', 'models': ('user', 'group')},
+#     #     {'label': 'Settings', 'icon':'icon-cog', 'models': ('auth.user', 'auth.group')},
+#     #     {'label': 'Support', 'icon':'icon-question-sign', 'url': '/support/'},
+#     # ),
+#
+#     # misc
+#     # 'LIST_PER_PAGE': 15
+# }
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

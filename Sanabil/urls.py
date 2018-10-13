@@ -7,7 +7,7 @@ from base import views as base_views
 from base.views import contact_view, contact_success_view
 from charity import views as charity_views
 from Sanabil import settings
-from charity.views import NecessiteuxListView, AideRecuListView, BesoinListView
+from charity.views import NecessiteuxListView, NecessiteuxData, AideRecuListView, BesoinListView
 from staff.views import AssociationListView
 
 
@@ -17,6 +17,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^media/(?P<path>.*)$', serve, { 'document_root': settings.MEDIA_ROOT}),
     url(r'^associations/?', AssociationListView.as_view(), name='association-list'),
+    url(r'^necessiteux/data/$', NecessiteuxData.as_view()),
     url(r'^necessiteux/?', NecessiteuxListView.as_view(), name='necessiteux-list'),
     url(r'^besoins/?', BesoinListView.as_view(), name='besoin-list'),
     url(r'^aides/?', AideRecuListView.as_view(), name='aiderecu-list'),

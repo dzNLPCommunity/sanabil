@@ -6,18 +6,15 @@
     <meta charset="utf-8"/>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
     <meta content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no" name="viewport"/>
-    <meta content="" name="description"/>
-    <meta content="sanabil, charity, algeria, need, donation, goodness, volunteer" name="keywords"/>
-    <meta content="Unchained" name="author"/>
+    <meta content="Semantic-UI-Forest, collection of design, themes and templates for Semantic-UI." name="description"/>
+    <meta content="Semantic-UI, Theme, Design, Template" name="keywords"/>
+    <meta content="PPType" name="author"/>
     <meta content="#ffffff" name="theme-color"/>
     <title>{% block title %} title {% endblock %}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.0/dist/semantic.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.semanticui.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.semanticui.min.css">
-    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/qurranarabic01" type="text/css"/>
-    <link href="https://fonts.googleapis.com/css?family=Amiri" rel="stylesheet">
     <link href="/static/css/default.css" rel="stylesheet" type="text/css"/>
-    <link href="/static/css/pandoc-code-highlight.css" rel="stylesheet" type="text/css"/>
     <link href="{% sass_src 'css/scss/style.scss' %}" rel="stylesheet" type="text/css"/>
 
 </head>
@@ -80,6 +77,18 @@
         })
     ;
     {% block extra_js %}{% endblock extra_js %}
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127401200-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-127401200-1');
 </script>
 </body>
 </html>

@@ -12,7 +12,7 @@
             <p>
             <div class="ui statistics">
                 <div class="huge olive statistic">
-                    <div class="value">
+                    <div id="totale" class="value">
                         22
                     </div>
                     <div class="label">
@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="huge brown statistic">
-                    <div class="value">
+                    <div id="familles" class="value">
                         31,200
                     </div>
                     <div class="label">
@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="huge orange statistic">
-                    <div class="value">
+                    <div id="enfants" class="value">
                         22
                     </div>
                     <div class="label">
@@ -71,36 +71,55 @@
     </div>
 {% endblock %}
 {% block extra_js %}
-    var ctx = document.getElementById('needs-charts-gender').getContext('2d');
-    var chart = new Chart(ctx, {
-    type: 'doughnut',
-    // data are percentages
-    data: {
-    labels: ["Femmes", "Hommes"],
-    datasets: [{
-    label: "Les nécessiteux par sex",
-    backgroundColor: ['rgb(255, 99, 132)','rgb(63, 173, 255)'],
-    borderColor:  ['rgb(255, 99, 132)','rgb(63, 173, 255)'],
-    data: [80, 30],
-    }]
-    },
-    options: {}
+$(document).ready(function () {
+    const endpoint = '/necessiteux/data/';
+    $.ajax({
+        method: "GET",
+        url: endpoint,
+        success: function (data) {
+            setChart(data);
+        },
+        error: function (error) {
+            console.log("error", error);
+        }
     });
-    var ctx_age = document.getElementById('needs-charts-age').getContext('2d');
-    var chart_age = new Chart(ctx_age, {
-    type: 'bar',
-    // data are percentages
-    data: {
-    labels: ["Enfants", "Ados","Jeunes","Adults","Seniors"],
-    datasets: [{
-    label: "Les nécessiteux par age",
-    backgroundColor: ['olive', 'lightsalmon', 'lightblue', 'lightcoral', 'teal'],
-    borderColor:  ['olive', 'lightsalmon', 'lightblue', 'lightcoral', 'teal'],
-    data: [30, 70, 23, 46, 78],
-    }]
-    },
-    options: {}
-    });
+
+    function setChart(data) {
+        $('#totale').html(data.numbers.totale);
+        $('#familles').html(data.numbers.familles);
+        $('#enfants').html(data.numbers.enfants);
+        let ctx = document.getElementById('needs-charts-gender').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'doughnut',
+            // data are percentages
+            data: {
+                labels: data.gander_data.labels,
+                datasets: [{
+                    label: "Les nécessiteux par sex",
+                    backgroundColor: ['rgb(255, 99, 132)', 'rgb(63, 173, 255)'],
+                    borderColor: ['rgb(255, 99, 132)', 'rgb(63, 173, 255)'],
+                    data: data.gander_data.data,
+                }]
+            },
+            options: {}
+        });
+        let ctx_age = document.getElementById('needs-charts-age').getContext('2d');
+        const chart_age = new Chart(ctx_age, {
+            type: 'bar',
+            // data are percentages
+            data: {
+                labels: data.age_data.labels,
+                datasets: [{
+                    label: "Les nécessiteux par age",
+                    backgroundColor: ['olive', 'lightsalmon', 'lightblue', 'lightcoral', 'teal'],
+                    borderColor: ['olive', 'lightsalmon', 'lightblue', 'lightcoral', 'teal'],
+                    data: data.age_data.data,
+                }]
+            },
+            options: {}
+        });
+    }
+});
 {% endblock extra_js %}
 
 

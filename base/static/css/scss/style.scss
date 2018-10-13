@@ -2,13 +2,15 @@ $color-teal: #00b5ad;
 $color-light-teal: #c0dede;
 @font-face {
   font-family: 'Scheherazade';
-  src: url('/static/fonts/ScheherazadeRegOT.ttf');
+  src: url('../../fonts/ScheherazadeRegOT.ttf');
 }
 
 @font-face {
   font-family: 'ArabeyesQr';
-  src: url('/static/fonts/arabeyes-qr.ttf');
+  src: url('../../fonts/arabeyes-qr.ttf');
 }
+
+//GENERAL
 
 body::-webkit-scrollbar {
   width: 10px;
@@ -24,6 +26,26 @@ body::-webkit-scrollbar-thumb {
   outline: 1px solid rgba(0, 0, 0, .87);
 }
 
+//HEADER
+#aya {
+  font-family: 'Scheherazade';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 43px;
+  padding: 45px;
+  .quran_decoration {
+    direction: rtl;
+    font-family: ArabeyesQr, Scheherazade;
+  }
+  .aya-surat {
+    font-family: 'Amiri', serif;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 30px;
+    color: $color-light-teal;
+  }
+}
+
 .hidden.menu {
   display: none;
 }
@@ -31,6 +53,18 @@ body::-webkit-scrollbar-thumb {
 .masthead.segment {
   min-height: 600px;
   padding: 1em 0;
+}
+
+.masthead.segment:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.2;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  background: url('../../images/background.jpg')
 }
 
 .masthead .logo.item img {
@@ -402,25 +436,6 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
-#aya {
-  font-family: 'QurranArabic01Regular';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 43px;
-  padding: 45px;
-  .quran_decoration {
-    direction: rtl;
-    font-family: ArabeyesQr, Scheherazade;
-  }
-  .aya-surat {
-    font-family: 'Amiri', serif;
-    font-weight: normal;
-    font-style: normal;
-    font-size: 30px;
-    color: $color-light-teal;
-  }
-}
-
 .contact_infos {
   font-size: larger;
   .row {
@@ -441,7 +456,11 @@ td.actions {
   text-align: center;
 }
 
+//MEDIA
 @media only screen and (min-width: 768px) {
+  .silder-icon {
+    display: none !important;
+  }
   .footer.segment {
     h4::after {
       content: "";
@@ -453,4 +472,21 @@ td.actions {
       left: 6%;
     }
   }
+}
+
+@media only screen and (max-width: 768px) {
+  .navigator > .item:nth-child(n+2), .contact-button {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  #associations, #needs {
+    &-table_wrapper .left.aligned.eight.wide.column {
+      display: none !important;
+    }
+  }
+}
+.hidden{
+  display: none!important;
 }
