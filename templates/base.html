@@ -14,14 +14,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.0/dist/semantic.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.semanticui.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.semanticui.min.css">
-    <link href="/static/css/default.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/static/css/owl.theme.default.min.css">
     <link href="{% sass_src 'css/scss/style.scss' %}" rel="stylesheet" type="text/css"/>
 
 </head>
 <body>
 {% include 'header.html' %}
 <!--Page Contents-->
-<div class="pusher">
+<div class="">
     {% block content %}
     {% endblock %}
     <div class="clr"></div>
@@ -42,10 +43,17 @@
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
 <script src="/static/js/dataTable.js"></script>
+<script src="/static/js/owl.carousel.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.0/dist/semantic.min.js"></script>
 <script>
     $(document)
         .ready(function () {
+            $(".owl-carousel").owlCarousel({
+                items: 3,
+                center: true,
+                nav: true,
+                navText: ["<i class='angle left icon'></i>", "<i class='angle right icon'></i>"]
+            });
             $(".detail-click").click(function () {
                 $("#besoin-detail").modal('show');
             });

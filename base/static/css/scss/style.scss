@@ -53,6 +53,7 @@ body::-webkit-scrollbar-thumb {
 .masthead.segment {
   min-height: 600px;
   padding: 1em 0;
+  opacity: 0.9;
 }
 
 .masthead.segment:after {
@@ -63,7 +64,7 @@ body::-webkit-scrollbar-thumb {
   opacity: 0.2;
   right: 0;
   bottom: 0;
-  z-index: 0;
+  z-index: -1;
   background: url('../../images/background.jpg')
 }
 
@@ -154,6 +155,9 @@ body::-webkit-scrollbar-thumb {
 
   .masthead.segment {
     min-height: 350px;
+    .menu {
+      border: none;
+    }
   }
 
   .masthead h1.ui.header {
@@ -487,6 +491,7 @@ td.actions {
     }
   }
 }
-.hidden{
-  display: none!important;
+
+.hidden {
+  display: none !important;
 }
