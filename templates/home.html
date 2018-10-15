@@ -5,7 +5,7 @@
 {% block content %}
     <div class="ui inverted vertical masthead center aligned segment">
         <div class="ui container">
-            <div class="ui large secondary inverted pointing menu">
+            <div class="ui large secondary inverted menu">
                 <a class="toc item"><i class="sidebar icon"></i></a>
                 <a class="item" href="/">
                     Accueil
@@ -23,14 +23,13 @@
                     Qui sommes nous?
                 </a>
                 <div class="right item">
-                    <a class="ui inverted teal button contact-button" href="{% url 'contact-page' %}">
-                        Contactez nous
+                    <a class="ui inverted teal hidden button contact-button" href="{% url 'contact-page' %}">
+                        Contactez-nous
                     </a>
                 </div>
             </div>
         </div>
         <div class="ui text container">
-
             <h1 class="ui inverted header" id="aya" dir="rtl">
                 <span class="quran_decoration">[</span>
                 مَثَلُ الَّذِينَ يُنْفِقُونَ أَمْوَالَهُمْ فِي سَبِيلِ اللَّهِ كَمَثَلِ حَبَّةٍ أَنْبَتَتْ سَبْعَ
@@ -43,164 +42,66 @@
           </span>
             </h1>
 
-            <a href="{% url 'contact-page' %}" class="ui huge inverted teal button hidden">
-                DONATE <i class="right arrow icon"></i>
+            <a href="{% url 'contact-page' %}" class="ui huge inverted teal button">
+                Contactez-nous<i class="right arrow icon"></i>
             </a>
         </div>
     </div>
+
     <div class="ui vertical stripe segment">
         <div class="ui text">
             <h1 class="ui horizontal header divider">
-                <a href="/">START HELPING</a>
-            </h1>
-            <div class="ui special cards">
-                <div class="ui card">
-                    <div class="blurring dimmable image">
-                        <div class="ui dimmer">
-                            <div class="content">
-                                <div class="center">
-                                    <div class="ui inverted button">Read more</div>
-                                </div>
-                            </div>
-                        </div>
-                        <img src="https://wpkoder.com/wp/attyia/wp-content/uploads/2015/10/help1.jpg">
-                    </div>
-                    <div class="content">
-                        <div class="header">Project title</div>
-                        <div class="meta">
-                            <a>Need</a>
-                        </div>
-                        <div class="description">
-                            Project description.
-                        </div>
-                    </div>
-                    <div class="extra content">
-                      <span class="right floated">
-                       Added in 2013
-                      </span>
-                        <span>
-                        <i class="user icon"></i>
-                        75 Need
-                      </span>
-                    </div>
-                    <div class="ui bottom attached active indicating progress" data-percent="80">
-                        <div class="bar"></div>
-                    </div>
-                </div>
-                <div class="ui card">
-                    <div class="blurring dimmable image">
-                        <div class="ui dimmer">
-                            <div class="content">
-                                <div class="center">
-                                    <div class="ui inverted button">Read more</div>
-                                </div>
-                            </div>
-                        </div>
-                        <img src="https://wpkoder.com/wp/attyia/wp-content/uploads/2015/10/help3.jpg">
-                    </div>
-                    <div class="content">
-                        <div class="header">Project title</div>
-                        <div class="meta">
-                            <a>Need</a>
-                        </div>
-                        <div class="description">
-                            Project description.
-                        </div>
-                    </div>
-                    <div class="extra content">
-                      <span class="right floated">
-                       Added in 2013
-                      </span>
-                        <span>
-                        <i class="user icon"></i>
-                        75 Need
-                      </span>
-                    </div>
-                    <div class="ui bottom attached small active indicating progress" data-percent="89">
-                        <div class="bar"></div>
-                    </div>
-                </div>
-                <div class="ui card">
-                    <div class="blurring dimmable image">
-                        <div class="ui dimmer">
-                            <div class="content">
-                                <div class="center">
-                                    <div class="ui inverted button">Read more</div>
-                                </div>
-                            </div>
-                        </div>
-                        <img src="https://wpkoder.com/wp/attyia/wp-content/uploads/2015/10/help1.jpg">
-                    </div>
-                    <div class="content">
-                        <div class="header">Project title</div>
-                        <div class="meta">
-                            <a>Need</a>
-                        </div>
-                        <div class="description">
-                            Project description.
-                        </div>
-                    </div>
-                    <div class="extra content">
-                      <span class="right floated">
-                       Added in 2013
-                      </span>
-                        <span>
-                        <i class="user icon"></i>
-                        75 Need
-                      </span>
-                    </div>
-
-                    <div class="ui bottom attached active indicating progress" data-percent="20">
-                        <div class="bar"></div>
-                    </div>
-                </div>
-            </div>
-            <h1 class="ui horizontal header divider">
-                <a href="/">WHAT WE DO</a>
+                <label class="text teal">NOS</label> ACTIVITÉS
             </h1>
             <div class="ui equal width stackable internally celled grid">
-                <div class="center aligned row">
-                    <div class="column">
-                        <i class="calendar alternate huge teal icon"></i>
-                        <h5>
-                            Events
-                        </h5>
-                        <p>
-                            We hold events...etc
-                        </p>
-                        <p>
-                            <a class="ui circular  teal button" href="{% url 'contact-page' %}">
-                                Know more
-                            </a>
-                        </p>
+                <div class="ui activities center aligned row">
+                    <div class="column ">
+                        <div class="card">
+                            <i class="calendar alternate huge teal icon"></i>
+                            <h5>
+                                Events
+                            </h5>
+                            <p>
+                                We hold events...etc
+                            </p>
+                            <p>
+                                <a class="ui circular  teal button" href="{% url 'contact-page' %}">
+                                    Know more
+                                </a>
+                            </p>
+                        </div>
                     </div>
                     <div class="column">
-                        <i class="heart huge teal icon"></i>
-                        <h5>
-                            Help the needy
-                        </h5>
-                        <p>
-                            Activity description
-                        </p>
-                        <p>
-                            <a class="ui circular teal button" href="{% url 'contact-page' %}">
-                                Know more
-                            </a>
-                        </p>
+                        <div class="card">
+                            <i class="heart huge teal icon"></i>
+                            <h5>
+                                Help the needy
+                            </h5>
+                            <p>
+                                Activity description
+                            </p>
+                            <p>
+                                <a class="ui circular teal button" href="{% url 'contact-page' %}">
+                                    Know more
+                                </a>
+                            </p>
+                        </div>
                     </div>
-                    <div class="column">
-                        <i class="users huge teal icon"></i>
-                        <h5>
-                            Associations
-                        </h5>
-                        <p>
-                            Activity description
-                        </p>
-                        <p>
-                            <a class="ui circular teal button" href="{% url 'contact-page' %}">
-                                Know more
-                            </a>
-                        </p>
+                    <div class="column ">
+                        <div class="card">
+                            <i class="users huge teal icon"></i>
+                            <h5>
+                                Associations
+                            </h5>
+                            <p>
+                                Activity description
+                            </p>
+                            <p>
+                                <a class="ui circular teal button" href="{% url 'contact-page' %}">
+                                    Know more
+                                </a>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
