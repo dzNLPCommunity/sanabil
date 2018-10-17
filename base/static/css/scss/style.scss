@@ -109,7 +109,7 @@ body.pushable {
 }
 
 .ui.vertical.stripe {
-  padding: 8em 0;
+  padding: 0 8em 0 0;
 }
 
 .ui.vertical.stripe h3 {
@@ -144,6 +144,7 @@ body.pushable {
 
 .footer.segment {
   padding: 5em 0;
+  margin-top: 10px;
   i.icon {
     margin-bottom: 10%;
   }
@@ -525,15 +526,50 @@ td.actions {
 }
 
 .activities {
+  .column {
+    box-shadow: none;
+  }
   .card {
-    padding: 20px 0 20px 0;
+    margin: 20px 0 20px 0;
     transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+    border-radius: 20px;
+      &:after {
+      content: "";
+      display: block;
+      margin: 0 auto;
+      width: 80%;
+      padding-bottom: 30px;
+      border-bottom: 2px solid transparent;
+    }
+       &:before {
+      content: "";
+      display: block;
+      margin: 0 auto;
+      width: 80%;
+      padding-bottom: 30px;
+      border-top: 2px solid transparent;
+    }
   }
   .card:hover {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    &:after{
-    border-bottom: 1px solid $color-teal;
-    border-top: 1px solid $color-teal;
+    &:after {
+      content: "";
+      display: block;
+      margin: 0 auto;
+      width: 80%;
+      padding-bottom: 30px;
+      border-bottom: 2px solid $color-teal;
+    }
+       &:before {
+      content: "";
+      display: block;
+      margin: 0 auto;
+      width: 80%;
+      padding-bottom: 30px;
+      border-top: 2px solid $color-teal;
     }
   }
+}
+.vision{
+  border: none;
 }

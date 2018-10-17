@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %} besoin {% endblock %}
+{% block title %} Besoins {% endblock %}
 
 
 {% block content %}
@@ -50,8 +50,8 @@
                             </i>
                         </td>
                         <td>
-                            <div class="ui teal right ribbon label">
-                                <i class="utensils icon"></i>{{ besoin.type.labels | default:"Type of need" }}
+                            <div class="ui  right ribbon label">
+                                <i class="utensils icon"></i>{{ besoin.type.labels | default:"Autres" }}
                             </div>
                             <a href="#" class="detail-click zoom-icon">
                                 <i class="large teal zoom icon"></i>
@@ -136,12 +136,13 @@
                             </div>
                             <a href="{% url 'contact-page' %}" class="ui teal right labeled icon button">
                                 Donate
-                                <i class="dullar icon"></i>
+                                <i class="dollar icon"></i>
                             </a>
                         </div>
                     </div>
                 {% empty %}
-                    <td>No besoin added yet.</td>
+                    <td>Aucun besoin ajouté pour le moment</td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -154,4 +155,3 @@
         </div>
     </div>
 {% endblock %}
-

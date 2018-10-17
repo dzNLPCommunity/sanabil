@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
-{% block title %} necess  {% endblock %}
+{% block title %} Nécessiteux  {% endblock %}
 
 
 {% block content %}
     <div class="ui vertical stripe segment">
         <div class="ui text center aligned container">
             <h1 class="ui horizontal header divider">
-                <a>Statistiques sur nos nécessiteux</a>
+                <label class="text teal">STAT</label>ISTIQUES
             </h1>
             <p>
             <div class="ui statistics">
@@ -55,7 +55,7 @@
                 </div>
             </div>
             <h1 class="ui horizontal header divider">
-                <a> Interested?</a>
+                <label class="text teal">ÊTES-VOUS</label> INTÉRESSÉS?
             </h1>
             <h3 class="ui header">
                 If you are interested in helping us?
@@ -68,55 +68,55 @@
     </div>
 {% endblock %}
 {% block extra_js %}
-$(document).ready(function () {
+    $(document).ready(function () {
     const endpoint = '/necessiteux/data/';
     $.ajax({
-        method: "GET",
-        url: endpoint,
-        success: function (data) {
-            setChart(data);
-        },
-        error: function (error) {
-            console.log("error", error);
-        }
+    method: "GET",
+    url: endpoint,
+    success: function (data) {
+    setChart(data);
+    },
+    error: function (error) {
+    console.log("error", error);
+    }
     });
 
     function setChart(data) {
-        $('#totale').html(data.numbers.totale);
-        $('#familles').html(data.numbers.familles);
-        $('#enfants').html(data.numbers.enfants);
-        let ctx = document.getElementById('needs-charts-gender').getContext('2d');
-        const chart = new Chart(ctx, {
-            type: 'doughnut',
-            // data are percentages
-            data: {
-                labels: data.gander_data.labels,
-                datasets: [{
-                    label: "Les nécessiteux par sex",
-                    backgroundColor: ['rgb(255, 99, 132)', 'rgb(63, 173, 255)'],
-                    borderColor: ['rgb(255, 99, 132)', 'rgb(63, 173, 255)'],
-                    data: data.gander_data.data,
-                }]
-            },
-            options: {}
-        });
-        let ctx_age = document.getElementById('needs-charts-age').getContext('2d');
-        const chart_age = new Chart(ctx_age, {
-            type: 'bar',
-            // data are percentages
-            data: {
-                labels: data.age_data.labels,
-                datasets: [{
-                    label: "Les nécessiteux par age",
-                    backgroundColor: ['olive', 'lightsalmon', 'lightblue', 'lightcoral', 'teal'],
-                    borderColor: ['olive', 'lightsalmon', 'lightblue', 'lightcoral', 'teal'],
-                    data: data.age_data.data,
-                }]
-            },
-            options: {}
-        });
+    $('#totale').html(data.numbers.totale);
+    $('#familles').html(data.numbers.familles);
+    $('#enfants').html(data.numbers.enfants);
+    let ctx = document.getElementById('needs-charts-gender').getContext('2d');
+    const chart = new Chart(ctx, {
+    type: 'doughnut',
+    // data are percentages
+    data: {
+    labels: data.gander_data.labels,
+    datasets: [{
+    label: "Les nécessiteux par sex",
+    backgroundColor: ['rgb(255, 99, 132)', 'rgb(63, 173, 255)'],
+    borderColor: ['rgb(255, 99, 132)', 'rgb(63, 173, 255)'],
+    data: data.gander_data.data,
+    }]
+    },
+    options: {}
+    });
+    let ctx_age = document.getElementById('needs-charts-age').getContext('2d');
+    const chart_age = new Chart(ctx_age, {
+    type: 'bar',
+    // data are percentages
+    data: {
+    labels: data.age_data.labels,
+    datasets: [{
+    label: "Les nécessiteux par age",
+    backgroundColor: ['olive', 'lightsalmon', 'lightblue', 'lightcoral', 'teal'],
+    borderColor: ['olive', 'lightsalmon', 'lightblue', 'lightcoral', 'teal'],
+    data: data.age_data.data,
+    }]
+    },
+    options: {}
+    });
     }
-});
+    });
 {% endblock extra_js %}
 
 
