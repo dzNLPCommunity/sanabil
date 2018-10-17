@@ -11,6 +11,7 @@
                 <thead>
                 <tr>
                     <th>Nom</th>
+                    <th>Type de don</th>
                     <th>Association</th>
                     <th>Centre</th>
                     <th>Montant</th>
@@ -25,6 +26,9 @@
                     <tr>
                         <td>
                             {{ besoin.nom }}</td>
+                        <td>
+                            {{ besoin.type.labels | default:"Autres" }}
+                        </td>
                         <td>
                             {{ besoin.association.nom |default:"/" }}
                         </td>
@@ -50,9 +54,6 @@
                             </i>
                         </td>
                         <td>
-                            <div class="ui  right ribbon label">
-                                <i class="utensils icon"></i>{{ besoin.type.labels | default:"Autres" }}
-                            </div>
                             <a href="#" class="detail-click zoom-icon">
                                 <i class="large teal zoom icon"></i>
                             </a>
@@ -141,7 +142,7 @@
                         </div>
                     </div>
                 {% empty %}
-                    <td>Aucun besoin ajouté pour le moment</td>
+                    <td>Aucun besoin est ajouté pour le moment</td>
                     <td></td>
                     <td></td>
                     <td></td>

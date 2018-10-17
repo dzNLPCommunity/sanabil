@@ -1,6 +1,5 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from .constants import DEFAULT, NEEDS_CHOICES
 
 
 class Wilaya(models.Model):
@@ -62,11 +61,7 @@ class CentreType(models.Model):
 
 
 class DonType(models.Model):
-    label = models.CharField(
-        choices=NEEDS_CHOICES,
-        default=DEFAULT,
-        max_length=100,
-        unique=True)
+    label = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
         return self.label

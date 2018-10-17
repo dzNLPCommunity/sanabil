@@ -71,22 +71,22 @@ body.pushable {
   //clip-path: polygon(0 0, 100% 0, 100% 43%, 94% 78%, 68% 100%, 32% 100%, 6% 78%, 0% 43%, 0 7%);
   //clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 70% 76%, 52% 88%, 26% 75%, 0% 75%);
   //clip-path: polygon(50% 0%, 100% 0, 100% 35%, 100% 70%, 73% 87%, 50% 100%, 24% 84%, 0% 70%, 0% 35%, 0 0);
-  clip-path: polygon(50% 0%, 100% 0, 100% 43%, 100% 91%, 68% 100%, 32% 100%, 0 91%, 0% 43%, 0 0);
+  //clip-path: polygon(50% 0%, 100% 0, 100% 43%, 100% 91%, 68% 100%, 32% 100%, 0 91%, 0% 43%, 0 0);
 }
 
-//
-//.masthead.segment:after {
-//  content: '';
-//  position: absolute;
-//  top: 0;
-//  left: 0;
-//  width: 200%;
-//  opacity: 0.09;
-//  right: 0;
-//  bottom: 0;
-//  z-index: -1;
-//  background: url('../../images/background.jpg')
-//}
+
+.masthead.segment:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  opacity: 0.09;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background: url('../../images/background.jpg')
+}
 
 .masthead .logo.item img {
   margin-right: 1em;
@@ -109,7 +109,7 @@ body.pushable {
 }
 
 .ui.vertical.stripe {
-  padding: 0 8em 0 0;
+  padding: 0;
 }
 
 .ui.vertical.stripe h3 {
@@ -143,7 +143,7 @@ body.pushable {
 }
 
 .footer.segment {
-  padding: 5em 0;
+  padding: 50px 0 5em 0;
   margin-top: 10px;
   i.icon {
     margin-bottom: 10%;
@@ -255,7 +255,9 @@ body.pushable {
   margin: 0 0 0 0.5em;
   font-family: 'Icons';
 }
-
+.needy-stats .ui.large.button{
+  margin-bottom: 20px;
+}
 .ui.table.dataTable thead th.sorting_asc:after {
   /*content: '\f0d8';*/
   content: '\f160';
@@ -468,7 +470,7 @@ body.pushable {
 .contact_infos {
   font-size: larger;
   .row {
-    margin-bottom: 10%;
+    margin-bottom: 10px;
   }
   button {
     float: right;

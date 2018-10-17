@@ -2,7 +2,6 @@
 
     var factory = function ($, DataTable) {
         "use strict";
-        /* Set the defaults for DataTables initialisation */
         $.extend(true, DataTable.defaults, {
             dom:
                 "<'left aligned eight wide column'l><'right aligned eight wide column'f>" +
@@ -15,7 +14,6 @@
             full_numbers_icon: DataTable.ext.pager.full_numbers
         });
 
-        /* Default class modification */
         $.extend(DataTable.ext.classes, {
             sWrapper: "ui grid dataTables_wrapper ",
             sFilterInput: "",
@@ -155,7 +153,7 @@ $(document).ready(function () {
         "pagingType": "full_numbers_icon",
         lengthChange: false,
         order: [1, 'desc'],
-        buttons: ['copy', 'excel', 'pdf', 'colvis']
+        buttons: ['copy', 'excel', 'pdf']
     });
     dtable_associations.buttons().container()
         .appendTo($('div.eight.column:eq(0)', dtable_associations.table().container()));
