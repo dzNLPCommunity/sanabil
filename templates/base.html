@@ -28,8 +28,8 @@
                 $('.special.cards .image').dimmer({
                     on: 'hover'
                 });
-                if ($(".secondary.menu").length) {
-                    $('.top.menu').addClass("hidden fixed");
+                if (!$(".secondary.menu").length) {
+                    $('.top.menu').removeClass("hidden fixed");
                 }
                 // fix menu when passed
                 $('.masthead')
