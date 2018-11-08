@@ -50,34 +50,33 @@ class NecessiteuxData(APIView):
 
     def get(self, request, format=None):
         qs = Necessiteux.objects.all()
+        qsFamille = Famille.objects.all()
         gender_qs = qs.annotate(count=Count('sexe'))
         gender_counts = [0, 0]
         for person in gender_qs:
             if person.sexe == 'F':
-                gender_counts[0] = person.count
+                gender_counts[0] = round(person.count * 100 / gender_qs.count(), 2)
             else:
-                gender_counts[1] = person.count
+                gender_counts[1] = round(person.count * 100 / gender_qs.count(), 2)
         gander_data = {
             "labels": ["Femmes", "Hommes"],
             "data": gender_counts,
         }
-        enfants = age_range(0, 13)
-        ados = age_range(14, 18)
+        enfants = age_range(0, 18)
         jeunes = age_range(19, 25)
         adults = age_range(26, 59)
-        seniors = age_range(60, 150)
+        vieux = age_range(60, 150)
         age_counts = [0, 0, 0, 0, 0, 0]
         enfants_count = 0
         if qs.count() > 0:
-            age_qs = qs.annotate(enfants=enfants). \
-                    annotate(ados=ados).annotate(jeunes=jeunes).annotate(adults=adults).annotate(seniors=seniors)
-            age_counts = [age_qs[0].enfants, age_qs[0].ados, age_qs[0].jeunes, age_qs[0].adults, age_qs[0].seniors]
+            age_qs = qs.annotate(enfants=enfants).annotate(jeunes=jeunes).annotate(adults=adults).annotate(vieux=vieux)
+            age_counts = [age_qs[0].enfants, age_qs[0].jeunes, age_qs[0].adults, age_qs[0].vieux]
             enfants_count = age_qs[0].enfants
         age_data = {
-            "labels": ["Enfants", "Ados", "Jeunes", "Adults", "Seniors"],
+            "labels": ["Enfants", "Jeunes", "Adultes", "Vieux"],
             "data": age_counts,
         }
-        numbers = {'totale': qs.count(), 'familles': qs.filter(appartient_famille=True).count(),
+        numbers = {'totale': qs.count(), 'familles': qsFamille.count(),
                    'enfants': enfants_count}
         data = {'gander_data': gander_data, 'age_data': age_data, 'numbers': numbers}
         return Response(data)
@@ -90,4 +89,8 @@ class AideRecuListView(ListView):
 
 class BesoinListView(ListView):
     model = Besoin
+
+    def get_satisfied_needs(self):
+        return self.model.objects.get(est_satisfait=True)
+
     paginate_by = 10

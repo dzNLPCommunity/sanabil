@@ -7,7 +7,7 @@
     <div class="needy-stats ui vertical stripe segment">
         <div class="ui text center aligned container">
             <h1 class="ui horizontal header divider">
-                <label class="text teal">STAT</label>ISTIQUES
+                <label class="text sanabil-color-accent">STAT</label>ISTIQUES
             </h1>
             <p>
             <div class="ui statistics">
@@ -38,7 +38,7 @@
                 <div class="center aligned row">
                     <div class="column">
                         <h4>
-                            La distribution des nécessiteux par sex
+                            La distribution des nécessiteux par sex ( % )
                         </h4>
                         <p class="needs-charts">
                             <canvas id="needs-charts-gender" width="200" height="300"></canvas>
@@ -54,16 +54,6 @@
                     </div>
                 </div>
             </div>
-            <h1 class="ui horizontal header divider">
-                <label class="text teal">ÊTES-VOUS</label> INTÉRESSÉS?
-            </h1>
-            <h3 class="ui header">
-                If you are interested in helping us?
-            </h3>
-            <p>
-                Our goal is to do that and that if you are please contact. We will reply you the soonest possible.
-            </p>
-            <a href="{% url 'contact-page' %}" class="ui large teal button">Contact us</a>
         </div>
     </div>
 {% endblock %}
@@ -108,8 +98,8 @@
     labels: data.age_data.labels,
     datasets: [{
     label: "Les nécessiteux par age",
-    backgroundColor: ['olive', 'lightsalmon', 'lightblue', 'lightcoral', 'teal'],
-    borderColor: ['olive', 'lightsalmon', 'lightblue', 'lightcoral', 'teal'],
+    backgroundColor: ['olive', 'lightsalmon', 'lightsanabil-color', 'lightcoral'],
+    borderColor: ['olive', 'lightsalmon', 'lightsanabil-color', 'lightcoral'],
     data: data.age_data.data,
     }]
     },

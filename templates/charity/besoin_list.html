@@ -13,11 +13,9 @@
                     <th>Nom</th>
                     <th>Type de don</th>
                     <th>Association</th>
-                    <th>Centre</th>
                     <th>Montant</th>
                     <th>Urgent</th>
                     <th>Date limite</th>
-                    <th>Satisfait</th>
                     <th>See more details</th>
                 </tr>
                 </thead>
@@ -33,29 +31,21 @@
                             {{ besoin.association.nom |default:"/" }}
                         </td>
                         <td>
-                            {{ besoin.centre.nom |default:"/" }}
-                        </td>
-                        <td>
                             <div class="ui big label">
                                 {{ besoin.montant }} <b>DA</b>
                             </div>
                         </td>
                         <td class="actions">
                             <i class="large icon
-                                    {% if besoin.est_urgent %}check teal{% else %} times red {% endif %}">
+                                    {% if besoin.est_urgent %}check sanabil-color{% else %} times red {% endif %}">
                             </i>
                         </td>
                         <td>
                             {{ besoin.date_limite |default:"/" }}
                         </td>
-                        <td class="actions">
-                            <i class="large icon
-                                    {% if besoin.est_satisfait %}check teal{% else %} times red {% endif %}">
-                            </i>
-                        </td>
                         <td class="detail-click">
                             <a href="#" class="zoom-icon">
-                                <i class="large teal zoom icon"></i>
+                                <i class="large sanabil-color zoom icon"></i>
                             </a>
 
                         </td>
@@ -97,7 +87,7 @@
                                     </div>
                                     <div class="item">
                                         <div class="content">
-                                            <a class="header teal">Centre</a>
+                                            <a class="header sanabil-color">Centre</a>
                                             <div class="description">
                                                 <ul>
                                                     <li value="-"><b>Nom:</b> {{ besoin.centre.nom | default:"/" }}</li>
@@ -133,17 +123,12 @@
                         </div>
                         <div class="actions">
                             <div class="ui black deny button">
-                                Close
+                                Fermer
                             </div>
-                            <a href="{% url 'contact-page' %}" class="ui teal right labeled icon button">
-                                Donate
-                                <i class="dollar icon"></i>
-                            </a>
                         </div>
                     </div>
                 {% empty %}
                     <td>Aucun besoin est ajouté pour le moment</td>
-                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>

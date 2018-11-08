@@ -7,27 +7,28 @@ from staff.models import Membre, Association
 
 class Famille(models.Model):
     nom = models.CharField(max_length=500)
-    nombre_enfant =  models.SmallIntegerField(default=0, blank=True, null=True)
+    nombre_enfant = models.SmallIntegerField(default=0, blank=True, null=True)
     archivé = models.BooleanField(default=False)
-
 
     def __str__(self):
         return "{}".format(self.nom)
+
 
 class Necessiteux(models.Model):
     association = models.ForeignKey(Association, null=True, on_delete=models.SET_NULL, related_name="members")
     nom = models.CharField(max_length=500)
     prenom = models.CharField(max_length=100)
     date_de_naissance = models.DateField(null=True)
-    sexe = models.CharField(max_length=1, choices = [("F", "Female"), ("M", "Male")])
+    sexe = models.CharField(max_length=1, choices=[("F", "Female"), ("M", "Male")])
     niveau_scolaire = models.ForeignKey(NiveauScolaire, on_delete=models.SET_NULL, blank=True, null=True)
     tel = models.CharField(max_length=20, blank=True, null=True)
-    pointure = models.IntegerField(null=True) # TODO validation 20 - 50
+    pointure = models.IntegerField(null=True)  # TODO validation 20 - 50
     taille = models.CharField(max_length=100, null=True)
-    situation_familiale = models.ForeignKey(SituationFamiliale, on_delete=models.SET_NULL,  null=True)
+    situation_familiale = models.ForeignKey(SituationFamiliale, on_delete=models.SET_NULL, null=True)
     situation_professionelle = models.ForeignKey(SituationProfessionelle, on_delete=models.SET_NULL, null=True)
     est_orphelin = models.BooleanField()
-    degré_nécessite = models.SmallIntegerField(default=0, choices = [(0, '0'), (1, '1'), (2, '2'), (3, '3') , (4, '4'), (5, '5')])
+    degré_nécessite = models.SmallIntegerField(default=0,
+                                               choices=[(0, '0'), (1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')])
     appartient_famille = models.ForeignKey(Famille, on_delete=models.SET_NULL, blank=True, null=True)
     represent_famille = models.BooleanField(default=False)
     archivé = models.BooleanField(default=False)
@@ -35,7 +36,6 @@ class Necessiteux(models.Model):
     class Meta:
         verbose_name_plural = "Nécessiteux"
         verbose_name = "Nécessiteux"
-
 
     def __str__(self):
         return "{} {}".format(self.nom, self.prenom)
@@ -48,6 +48,7 @@ class Centre(models.Model):
 
     def __str__(self):
         return "{} ({})".format(self.nom, self.type)
+
 
 class Besoin(models.Model):
     association = models.ForeignKey(Association, on_delete=models.CASCADE)
@@ -63,18 +64,17 @@ class Besoin(models.Model):
     date_remise_don = models.DateField(blank=True, null=True)
     est_satisfait = models.BooleanField(default=False)
 
-
     def __str__(self):
         return "{}. {}".format(self.id, self.nom)
 
+
 class Donneur(models.Model):
     association = models.ForeignKey(Association, on_delete=models.SET_NULL, null=True)
-    nom =  models.CharField(max_length=100)
+    nom = models.CharField(max_length=100)
     tel = models.CharField(max_length=20, null=True, blank=True)
     type = models.ForeignKey(DonneurType, on_delete=models.SET_NULL, null=True)
-    active = models.BooleanField(default = False)
-    anonyme =  models.BooleanField(default = True)
-
+    active = models.BooleanField(default=False)
+    anonyme = models.BooleanField(default=True)
 
     def __str__(self):
         return "{} ({})".format(self.nom, self.type)
@@ -82,7 +82,7 @@ class Donneur(models.Model):
 
 class AideRecu(models.Model):
     association = models.ForeignKey(Association, on_delete=models.CASCADE)
-    donneur =  models.ForeignKey(Donneur, on_delete=models.SET_NULL, null=True)
+    donneur = models.ForeignKey(Donneur, on_delete=models.SET_NULL, null=True)
     type = models.ForeignKey(DonType, on_delete=models.SET_NULL, null=True)
     date_reception = models.DateField()
     notes = models.TextField(blank=True, null=True)
@@ -93,6 +93,3 @@ class AideRecu(models.Model):
 
     def __str__(self):
         return "Don #{} ({})".format(self.id, self.type)
-
-
-

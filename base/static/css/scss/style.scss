@@ -1,5 +1,6 @@
-$color-teal: #00b5ad;
-$color-light-teal: #c0dede;
+$color-sanabil-accent: #F28230;
+$color-sanabil: #5DBCD2;
+$color-light-color-sanabil: #90dcf8;
 @font-face {
   font-family: 'Scheherazade';
   src: url('../../fonts/ScheherazadeRegOT.ttf');
@@ -9,7 +10,9 @@ $color-light-teal: #c0dede;
   font-family: 'ArabeyesQr';
   src: url('../../fonts/arabeyes-qr.ttf');
 }
-
+.ui.header{
+  color: $color-sanabil;
+}
 //GENERAL
 
 body::-webkit-scrollbar {
@@ -29,7 +32,34 @@ body::-webkit-scrollbar-thumb {
 body.pushable {
   background: transparent !important;
 }
+.sanabil-color-accent{
+    color: $color-sanabil-accent!important;
+}
+.sanabil-color {
+  color: $color-sanabil;
+}
 
+.ui.sanabil-color.button, .ui.sanabil-color.button:hover {
+  color:white;
+  background-color: $color-sanabil;
+
+}
+.ui.vertical.segment{
+  border: none;
+}
+
+.ui.sanabil-color.button.inverted {
+  background-color: transparent;
+  color: $color-sanabil;
+  box-shadow: 0 0 0 2px $color-sanabil inset!important;
+  &:hover {
+    background-color: $color-sanabil;
+    color: white;
+  }
+}
+.activities p{
+  height: 150px;
+}
 //HEADER
 #aya {
   font-family: 'Scheherazade';
@@ -46,7 +76,7 @@ body.pushable {
     font-weight: normal;
     font-style: normal;
     font-size: 30px;
-    color: $color-light-teal;
+    color: $color-light-color-sanabil;
   }
 }
 
@@ -73,7 +103,6 @@ body.pushable {
   //clip-path: polygon(50% 0%, 100% 0, 100% 35%, 100% 70%, 73% 87%, 50% 100%, 24% 84%, 0% 70%, 0% 35%, 0 0);
   //clip-path: polygon(50% 0%, 100% 0, 100% 43%, 100% 91%, 68% 100%, 32% 100%, 0 91%, 0% 43%, 0 0);
 }
-
 
 .masthead.segment:after {
   content: '';
@@ -126,13 +155,15 @@ body.pushable {
 }
 
 .ui.vertical.stripe p {
-  font-size: 1.33em;
+  font-size: 1em;
 }
 
 .ui.vertical.stripe .horizontal.divider {
   margin: 3em 0;
 }
-
+.ui.grid{
+  margin: 0!important;
+}
 .quote.stripe.segment {
   padding: 0;
 }
@@ -206,7 +237,7 @@ body.pushable {
 
 .header {
   a {
-    color: $color-teal;
+    color: $color-sanabil;
   }
 }
 
@@ -255,9 +286,11 @@ body.pushable {
   margin: 0 0 0 0.5em;
   font-family: 'Icons';
 }
-.needy-stats .ui.large.button{
+
+.needy-stats .ui.large.button {
   margin-bottom: 20px;
 }
+
 .ui.table.dataTable thead th.sorting_asc:after {
   /*content: '\f0d8';*/
   content: '\f160';
@@ -351,7 +384,7 @@ body.pushable {
 
 .dataTables_filter input {
   background: #fff none repeat scroll 0 0;
-  border: 1px dotted teal;
+  border: 1px dotted $color-sanabil;
   border-radius: 500rem;
   box-shadow: none;
   color: rgba(0, 0, 0, 0.87);
@@ -495,7 +528,7 @@ td.actions {
       content: "";
       width: 50px;
       height: 2px;
-      background-color: $color-teal;
+      background-color: $color-sanabil;
       position: absolute;
       bottom: 80%;
       left: 6%;
@@ -503,8 +536,8 @@ td.actions {
   }
 }
 
-.text.teal {
-  color: $color-teal;
+.text.color-sanabil {
+  color: $color-sanabil;
 }
 
 @media only screen and (max-width: 768px) {
@@ -533,7 +566,7 @@ td.actions {
     margin: 20px 0 20px 0;
     transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
     border-radius: 20px;
-      &:after {
+    &:after {
       content: "";
       display: block;
       margin: 0 auto;
@@ -541,7 +574,7 @@ td.actions {
       padding-bottom: 30px;
       border-bottom: 2px solid transparent;
     }
-       &:before {
+    &:before {
       content: "";
       display: block;
       margin: 0 auto;
@@ -558,18 +591,19 @@ td.actions {
       margin: 0 auto;
       width: 80%;
       padding-bottom: 30px;
-      border-bottom: 2px solid $color-teal;
+      border-bottom: 2px solid $color-sanabil;
     }
-       &:before {
+    &:before {
       content: "";
       display: block;
       margin: 0 auto;
       width: 80%;
       padding-bottom: 30px;
-      border-top: 2px solid $color-teal;
+      border-top: 2px solid $color-sanabil;
     }
   }
 }
-.vision{
+
+.vision {
   border: none;
 }

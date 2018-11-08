@@ -11,6 +11,9 @@ from charity.views import NecessiteuxListView, NecessiteuxData, AideRecuListView
 from staff.views import AssociationListView
 
 
+admin.site.site_header = 'Sanabil Administration'
+admin.site.site_title = 'Sanabil'
+
 
 urlpatterns = [
     url(r'^jet/', include('jet.urls', 'jet')),
@@ -21,10 +24,10 @@ urlpatterns = [
     url(r'^necessiteux/?', NecessiteuxListView.as_view(), name='necessiteux-list'),
     url(r'^besoins/?', BesoinListView.as_view(), name='besoin-list'),
     url(r'^aides/?', AideRecuListView.as_view(), name='aiderecu-list'),
-    url(r'^help/?', charity_views.helppage, name='help-page'),
+    url(r'^about/?', charity_views.helppage, name='help-page'),
     url(r'^contact/', contact_view, name='contact-page'),
     url(r'^contact-success/', contact_success_view, name='contact-success-page'),
-    url(r'^', charity_views.homepage, name='home-page'),
+    url(r'^$', charity_views.homepage, name='home-page'),
 ]
 
 if settings.DEBUG:
