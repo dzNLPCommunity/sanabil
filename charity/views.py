@@ -55,9 +55,11 @@ class NecessiteuxData(APIView):
         gender_counts = [0, 0]
         for person in gender_qs:
             if person.sexe == 'F':
-                gender_counts[0] = round(person.count * 100 / gender_qs.count(), 2)
+                gender_counts[0] = person.count
             else:
-                gender_counts[1] = round(person.count * 100 / gender_qs.count(), 2)
+                gender_counts[1] = person.count
+        gender_counts[0] = round(gender_counts[0] * 100 / (gender_counts[0]+gender_counts[1]), 2)
+        gender_counts[1] = 100 - gender_counts[0]
         gander_data = {
             "labels": ["Femmes", "Hommes"],
             "data": gender_counts,
@@ -66,7 +68,7 @@ class NecessiteuxData(APIView):
         jeunes = age_range(19, 25)
         adults = age_range(26, 59)
         vieux = age_range(60, 150)
-        age_counts = [0, 0, 0, 0, 0, 0]
+        age_counts = [0, 0, 0, 0, 0]
         enfants_count = 0
         if qs.count() > 0:
             age_qs = qs.annotate(enfants=enfants).annotate(jeunes=jeunes).annotate(adults=adults).annotate(vieux=vieux)

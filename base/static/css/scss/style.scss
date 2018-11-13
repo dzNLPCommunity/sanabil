@@ -10,9 +10,11 @@ $color-light-color-sanabil: #90dcf8;
   font-family: 'ArabeyesQr';
   src: url('../../fonts/arabeyes-qr.ttf');
 }
-.ui.header{
+
+.ui.header {
   color: $color-sanabil;
 }
+
 //GENERAL
 
 body::-webkit-scrollbar {
@@ -32,34 +34,39 @@ body::-webkit-scrollbar-thumb {
 body.pushable {
   background: transparent !important;
 }
-.sanabil-color-accent{
-    color: $color-sanabil-accent!important;
+
+.sanabil-color-accent {
+  color: $color-sanabil-accent !important;
 }
+
 .sanabil-color {
   color: $color-sanabil;
 }
 
 .ui.sanabil-color.button, .ui.sanabil-color.button:hover {
-  color:white;
+  color: white;
   background-color: $color-sanabil;
 
 }
-.ui.vertical.segment{
+
+.ui.vertical.segment {
   border: none;
 }
 
 .ui.sanabil-color.button.inverted {
   background-color: transparent;
   color: $color-sanabil;
-  box-shadow: 0 0 0 2px $color-sanabil inset!important;
+  box-shadow: 0 0 0 2px $color-sanabil inset !important;
   &:hover {
     background-color: $color-sanabil;
     color: white;
   }
 }
-.activities p{
+
+.activities p {
   height: 150px;
 }
+
 //HEADER
 #aya {
   font-family: 'Scheherazade';
@@ -161,9 +168,11 @@ body.pushable {
 .ui.vertical.stripe .horizontal.divider {
   margin: 3em 0;
 }
-.ui.grid{
-  margin: 0!important;
+
+.ui.grid {
+  margin: 0 !important;
 }
+
 .quote.stripe.segment {
   padding: 0;
 }
@@ -200,19 +209,28 @@ body.pushable {
     display: none !important;
   }
 
-  .secondary.menu .item,
-  .secondary.menu .menu {
+  .ui.secondary.inverted.menu a.item {
     display: none;
   }
 
-  .secondary.menu .toc.item {
-    display: block;
+  a.toc.item {
+    display: block !important;
   }
 
   .masthead.segment {
     min-height: 350px;
     .menu {
       border: none;
+    }
+  }
+
+  #associations-table_filter label{
+    text-align: left;
+  }
+
+  .footer {
+    button.contact {
+      margin-left: 25%;
     }
   }
 

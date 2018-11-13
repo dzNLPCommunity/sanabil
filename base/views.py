@@ -12,9 +12,9 @@ def contact_view(request):
     else:
         form = ContactForm(request.POST)
         if form.is_valid():
-            subject = form.cleaned_data['subject']
-            from_email = form.cleaned_data['from_email']
-            message = form.cleaned_data['message']
+            subject = form.cleaned_data['Sujet']
+            from_email = form.cleaned_data['Votre_email']
+            message = form.cleaned_data['Votre_message']
             try:
                 send_mail(subject, message, from_email, ['admin@example.com'])
             except BadHeaderError:
