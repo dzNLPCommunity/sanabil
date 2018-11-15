@@ -3,23 +3,21 @@
 {% block title %} Contactez-nous {% endblock %}
 
 {% block content %}
-    <div class="contact ui vertical  segment">
-        <div class="ui middle aligned stackable grid container">
-            <div class="seven wide column">
-                <form class="ui form" method="post">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button class="ui large sanabil-color button" type="submit">Envoyer</button>
-                </form>
-            </div>
-            <div class="contact_infos six wide right column">
-                <div class="row">
-                    <i class="large sanabil-color envelope icon"></i> dz.sanabil@gmail.com
-                </div>
-                <div class="row">
-                    <i class="large sanabil-color phone icon"></i> +213 540 286 003
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="ui centered grid">
+		<div class="seven wide column">
+			<form class="ui form" method="post">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<button class="ui large sanabil-color button" type="submit">Envoyer</button>
+			</form>
+		</div>
+		<div class="contact_infos six wide right column">
+			<div class="row">
+				<i class="large sanabil-color envelope icon"></i> dz.sanabil@gmail.com
+			</div>
+			<div class="row">
+				<i class="large sanabil-color phone icon"></i> +213 540 286 003
+			</div>
+		</div>
+	</div>
 {% endblock %}

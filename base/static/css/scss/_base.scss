@@ -1,0 +1,36 @@
+.clr {
+  clear: both;
+}
+
+.hidden {
+  display: none !important;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+  background: $color_light_grey;
+}
+
+body::-webkit-scrollbar-track {
+  background: $color_light_grey;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, .87);
+  outline: 1px solid rgba(0, 0, 0, .87);
+}
+
+body.pushable {
+  background: transparent !important;
+}
+
+body {
+  h1, h2, h3, h4, h5 {
+    font-family: 'Alegreya', serif !important;
+    * {
+      font-family: 'Alegreya', serif !important;
+    }
+  }
+}
+
+

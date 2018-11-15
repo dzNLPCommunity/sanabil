@@ -1,0 +1,14 @@
+.contact_infos {
+  .row {
+    margin-bottom: 10px;
+  }
+  button {
+    float: right;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .navigator > .item:nth-child(n+2), .contact-button {
+    display: none !important;
+  }
+}

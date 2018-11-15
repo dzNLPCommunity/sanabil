@@ -1,0 +1,69 @@
+.sanabil-color {
+  color: $color_sanabil;
+  &-accent {
+    color: $color_sanabil_accent !important;
+  }
+}
+
+.ui.secondary.inverted.menu a.item {
+  color: $color_ghost_white !important;
+}
+
+.text.color_sanabil,  .header, .header a, .ui.sanabil-color.button.inverted {
+  color: $color_sanabil;
+}
+
+.ui.sanabil-color.button, .ui.sanabil-color.button:hover {
+  color: $color_ghost_white;
+  background-color: $color_sanabil;
+}
+
+.ui.sanabil-color.button.inverted {
+  background-color: transparent;
+  box-shadow: 0 0 0 2px $color_sanabil inset !important;
+  &:hover {
+    background-color: $color_sanabil;
+    color: white;
+  }
+}
+
+.masthead .logo.item img {
+  margin-right: 16px;
+}
+
+.masthead .ui.menu .ui.button {
+  margin-left: 8px;
+}
+
+.ui.vertical.stripe {
+  .floated.image {
+    clear: both;
+
+  }
+  .button, p {
+    + h3 {
+      margin-top: 48px;
+    }
+  }
+}
+
+.ui.cards {
+  margin-left: 15%;
+}
+
+.secondary.menu .toc.item, .hidden.menu, .vision, .silder-icon {
+  display: none !important;
+}
+
+@media only screen and (max-width: 768px) {
+    a.toc.item, .silder-icon {
+    display: block !important;
+  }
+  .ui.fixed.menu, .ui.secondary.inverted.menu a.item {
+    display: none !important;
+  }
+
+  .masthead h2 {
+    margin-top: 8px;
+  }
+}

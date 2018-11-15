@@ -1,0 +1,26 @@
+.ui.statistics {
+  margin-left: 15%;
+}
+
+.needy-stats .ui.large.button {
+  margin-bottom: 20px;
+}
+
+td.detail-click, td.actions {
+  text-align: center!important;
+}
+
+@media only screen and (max-width: 768px) {
+  #associations-table_filter label {
+    text-align: left;
+  }
+
+}
+
+@media only screen and (max-width: 400px) {
+  #associations, #needs {
+    &-table_wrapper .left.aligned.eight.wide.column {
+      display: none !important;
+    }
+  }
+}

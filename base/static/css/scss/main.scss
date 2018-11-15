@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Alegreya');
+@font-face {
+  font-family: 'Scheherazade';
+  src: url('../../fonts/ScheherazadeRegOT.ttf');
+}
+
+@font-face {
+  font-family: 'ArabeyesQr';
+  src: url('../../fonts/arabeyes-qr.ttf');
+}
+@import "variables";
+@import "mixins";
+@import "component";
+@import "layout";
+@import "base";
+@import "pages/contact";
+@import "pages/other_pages";
+@import "pages/home";
+@import "vendor";
