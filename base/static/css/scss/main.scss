@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Merriweather');
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
 @import url('https://fonts.googleapis.com/css?family=Alegreya');
+@import url('https://fonts.googleapis.com/css?family=Amiri');
+
 @font-face {
   font-family: 'Scheherazade';
   src: url('../../fonts/ScheherazadeRegOT.ttf');
@@ -10,6 +10,7 @@
   font-family: 'ArabeyesQr';
   src: url('../../fonts/arabeyes-qr.ttf');
 }
+
 @import "variables";
 @import "mixins";
 @import "component";

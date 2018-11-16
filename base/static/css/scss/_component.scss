@@ -5,25 +5,38 @@
   }
 }
 
-.ui.secondary.inverted.menu a.item {
-  color: $color_ghost_white !important;
+.ui.secondary.pointing.menu .item {
+  &.active, &:hover {
+    border-color: $color_sanabil_accent !important;
+    color: $color_sanabil_accent !important;
+  }
+  &:hover {
+    transition: border-color 0s ease-out 0.2s;
+  }
 }
 
-.text.color_sanabil,  .header, .header a, .ui.sanabil-color.button.inverted {
+.text.color_sanabil, h1.header, .header a {
+  color: $color_sanabil !important;
+}
+
+.text.color_sanabil, h1.header, .header a, .ui.sanabil-color.button.inverted {
   color: $color_sanabil;
 }
 
-.ui.sanabil-color.button, .ui.sanabil-color.button:hover {
-  color: $color_ghost_white;
-  background-color: $color_sanabil;
+.contact-form .sanabil-color.button,
+.ui.footer .sanabil-color.button,
+.ui.navigator .sanabil-color.button,
+.ui.sanabil-color.button:hover {
+  color: $color_ghost_white !important;
+  background-color: $color_sanabil !important;
 }
 
 .ui.sanabil-color.button.inverted {
   background-color: transparent;
   box-shadow: 0 0 0 2px $color_sanabil inset !important;
-  &:hover {
+  &home:hover {
     background-color: $color_sanabil;
-    color: white;
+    color: $color_ghost_white !important;
   }
 }
 
@@ -51,18 +64,17 @@
   margin-left: 15%;
 }
 
-.secondary.menu .toc.item, .hidden.menu, .vision, .silder-icon {
+.secondary.menu .toc.item, .hidden.menu, .silder-icon {
   display: none !important;
 }
 
 @media only screen and (max-width: 768px) {
-    a.toc.item, .silder-icon {
-    display: block !important;
-  }
   .ui.fixed.menu, .ui.secondary.inverted.menu a.item {
     display: none !important;
   }
-
+  .secondary.menu .toc.item, .ui.secondary.inverted.menu .toc.item, .silder-icon {
+    display: block !important;
+  }
   .masthead h2 {
     margin-top: 8px;
   }

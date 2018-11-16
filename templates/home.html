@@ -5,9 +5,9 @@
 {% block content %}
 	<div class="ui inverted vertical masthead center aligned segment">
 		<div class="ui container">
-			<div class="ui large secondary inverted menu">
+			<div class="ui inverted secondary pointing menu">
 				<a class="toc item"><i class="sidebar icon"></i></a>
-				<a class="item" href="/">
+				<a class="item active" href="/">
 					Accueil
 				</a>
 				<a class="item" href="{% url 'association-list' %}">
@@ -37,12 +37,11 @@
 				عَلِيمٌ
 				<span class="quran_decoration">]</span>
 				<span class="aya-surat">
-            <small>البقرة </small>
-            261
-          </span>
+            <span> الآية 261 من سورة البقرة </span>
+             </span>
 			</h1>
 
-			<a href="{% url 'contact-page' %}" class="ui huge inverted sanabil-color button">
+			<a href="{% url 'contact-page' %}" class="home ui huge inverted sanabil-color button">
 				Contactez-nous<i class="right arrow icon"></i>
 			</a>
 		</div>

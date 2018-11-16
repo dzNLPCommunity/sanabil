@@ -1,5 +1,5 @@
 .ui {
-  .vertical {
+  &.vertical {
     &.stripe {
       padding: 0;
       .horizontal.divider {
@@ -14,7 +14,7 @@
     margin: 0 !important;
   }
   .raised.segment {
-    margin-bottom: 15%;
+    margin-bottom: 5%;
     text-align: center;
   }
 }
@@ -39,8 +39,8 @@
 }
 
 .footer.segment {
-  padding: 80px 0 80px 0;
-  margin-top: 10px;
+  padding: 20px 0 80px 0;
+  margin-top: 10px!important;
   i.icon {
     margin-bottom: 10%;
   }

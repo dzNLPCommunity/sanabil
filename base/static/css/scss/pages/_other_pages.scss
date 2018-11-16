@@ -14,7 +14,18 @@ td.detail-click, td.actions {
   #associations-table_filter label {
     text-align: left;
   }
-
+  .contact-form {
+   .ui.grid>[class*="seven wide"].column {
+      width: 60% !important;
+    }
+  }
+  .contact_infos {
+    display: none !important;
+  }
+  .logo-sanabil {
+    width: 65% !important;
+    margin-left: 15%;
+  }
 }
 
 @media only screen and (max-width: 400px) {

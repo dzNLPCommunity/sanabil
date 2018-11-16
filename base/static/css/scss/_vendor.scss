@@ -106,3 +106,9 @@
   text-align: left;
   transition: background-color 0.1s ease 0s, box-shadow 0.1s ease 0s, border-color 0.1s ease 0s;
 }
+
+@media only screen and (max-width: 768px) {
+  .dt-buttons {
+    display: none!important;
+  }
+}

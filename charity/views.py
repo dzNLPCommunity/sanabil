@@ -41,7 +41,6 @@ def age_range(min_age, max_age):
     current = now().date()
     min_date = date(current.year - min_age, current.month, current.day)
     max_date = date(current.year - max_age, current.month, current.day)
-    print(min_age, max_age)
     return Count('date_de_naissance', filter=Q(date_de_naissance__gte=max_date) & Q(date_de_naissance__lte=min_date))
 
 

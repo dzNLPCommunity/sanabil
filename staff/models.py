@@ -7,9 +7,6 @@ from base.models import Commune
 from staff.constants import PROFILE_TYPES
 
 
-
-
-
 class Membre(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True, editable=False)
     prénom = models.CharField(max_length=30)

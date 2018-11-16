@@ -2,8 +2,6 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.static import serve
 
-
-from base import views as base_views
 from base.views import contact_view, contact_success_view
 from charity import views as charity_views
 from Sanabil import settings
