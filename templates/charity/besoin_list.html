@@ -16,7 +16,7 @@
                     <th>Montant</th>
                     <th>Urgent</th>
                     <th>Date limite</th>
-                    <th>See more details</th>
+                    <th>Autres détails</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -60,7 +60,8 @@
                                 <div class="ui header">{{ besoin.nom }}</div>
                                 <p>
                                 <div class="ui relaxed divided list horizontal">
-                                    <div class="item">
+	                             {% if besoin.description|length > 0 %}
+		                             <div class="item">
                                         <div class="content">
                                             <a class="header">Description</a>
                                             <div class="description">
@@ -68,6 +69,7 @@
                                             </div>
                                         </div>
                                     </div>
+	                             {% endif %}
                                     <div class="item">
                                         <div class="content">
                                             <a class="header">Association</a>
@@ -80,38 +82,6 @@
                                                     </li>
                                                     <li value="-">
                                                         <b>Surnom:</b> {{ besoin.association.surnom | default:"/" }}
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="content">
-                                            <a class="header sanabil-color">Centre</a>
-                                            <div class="description">
-                                                <ul>
-                                                    <li value="-"><b>Nom:</b> {{ besoin.centre.nom | default:"/" }}</li>
-                                                    <li value="-"><b>Commune:</b> {{ besoin.centre.type | default:"/" }}
-                                                    </li>
-                                                    <li value="-">
-                                                        <b>Surnom:</b> {{ besoin.centre.address | default:"/" }}</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="content">
-                                            <a class="header">Details</a>
-                                            <div class="description">
-                                                <ul>
-                                                    <li value="-"><b>Date
-                                                        limite:</b> {{ besoin.date_limite | default:"/" }}</li>
-                                                    <li value="-"><b>Date de
-                                                        planification:</b> {{ besoin.date_planification | default:"/" }}
-                                                    </li>
-                                                    <li value="-"><b>Date de remise de
-                                                        don:</b> {{ besoin.date_remise_don | default:"/" }}</li>
-                                                    <li value="-"><b>Montant:</b> {{ besoin.montant | default:"/" }} DA
                                                     </li>
                                                 </ul>
                                             </div>

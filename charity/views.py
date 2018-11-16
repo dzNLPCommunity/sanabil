@@ -49,15 +49,17 @@ class NecessiteuxData(APIView):
     permission_classes = []
 
     def get(self, request, format=None):
-        qs = Necessiteux.objects.all()
+        qs = Necessiteux.objects
         qsFamille = Famille.objects.all()
         gender_qs = qs.annotate(count=Count('sexe'))
         gender_counts = [0, 0]
         for person in gender_qs:
             if person.sexe == 'F':
-                gender_counts[0] = round(person.count * 100 / gender_qs.count(), 2)
+                gender_counts[0] = person.count
             else:
-                gender_counts[1] = round(person.count * 100 / gender_qs.count(), 2)
+                gender_counts[1] = person.count
+        gender_counts[0] = round(gender_counts[0] * 100 / (gender_counts[0]+gender_counts[1]), 2)
+        gender_counts[1] = 100 - gender_counts[0]
         gander_data = {
             "labels": ["Femmes", "Hommes"],
             "data": gender_counts,
@@ -66,12 +68,12 @@ class NecessiteuxData(APIView):
         jeunes = age_range(19, 25)
         adults = age_range(26, 59)
         vieux = age_range(60, 150)
-        age_counts = [0, 0, 0, 0, 0, 0]
+        age_counts = [0, 0, 0, 0]
         enfants_count = 0
         if qs.count() > 0:
-            age_qs = qs.annotate(enfants=enfants).annotate(jeunes=jeunes).annotate(adults=adults).annotate(vieux=vieux)
-            age_counts = [age_qs[0].enfants, age_qs[0].jeunes, age_qs[0].adults, age_qs[0].vieux]
-            enfants_count = age_qs[0].enfants
+            age_qs = qs.values('date_de_naissance').annotate(enfants=enfants, jeunes=jeunes, adults=adults, vieux=vieux)
+            age_counts = [age_qs.filter(enfants=1).count(), age_qs.filter(jeunes=1).count(), age_qs.filter(adults=1).count(), age_qs.filter(vieux=1).count()]
+            enfants_count = age_counts[0]
         age_data = {
             "labels": ["Enfants", "Jeunes", "Adultes", "Vieux"],
             "data": age_counts,

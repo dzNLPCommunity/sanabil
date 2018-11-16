@@ -1,0 +1,37 @@
+.ui.statistics {
+  margin-left: 15%;
+}
+
+.needy-stats .ui.large.button {
+  margin-bottom: 20px;
+}
+
+td.detail-click, td.actions {
+  text-align: center!important;
+}
+
+@media only screen and (max-width: 768px) {
+  #associations-table_filter label {
+    text-align: left;
+  }
+  .contact-form {
+   .ui.grid>[class*="seven wide"].column {
+      width: 60% !important;
+    }
+  }
+  .contact_infos {
+    display: none !important;
+  }
+  .logo-sanabil {
+    width: 65% !important;
+    margin-left: 15%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  #associations, #needs {
+    &-table_wrapper .left.aligned.eight.wide.column {
+      display: none !important;
+    }
+  }
+}

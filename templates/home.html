@@ -3,107 +3,111 @@
 {% block title %} Sanabil - سنابل {% endblock %}
 
 {% block content %}
-    <div class="ui inverted vertical masthead center aligned segment">
-        <div class="ui container">
-            <div class="ui large secondary inverted menu">
-                <a class="toc item"><i class="sidebar icon"></i></a>
-                <a class="item" href="/">
-                    Accueil
-                </a>
-                <a class="item" href="{% url 'association-list' %}">
-                    Associations
-                </a>
-                <a class="item" href="{% url 'besoin-list' %}">
-                    Besoins
-                </a>
-                <a class="item" href="{% url 'necessiteux-list' %}">
-                    Nécessiteux
-                </a>
-                <a class="item" href="{% url 'help-page' %}">
-                    Qui sommes-nous?
-                </a>
-                <div class="right item">
-                    <a class="ui inverted sanabil-color hidden button contact-button" href="{% url 'contact-page' %}">
-                        Contactez-nous
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="ui text container">
-            <h1 class="ui inverted header" id="aya" dir="rtl">
-                <span class="quran_decoration">[</span>
-                مَثَلُ الَّذِينَ يُنْفِقُونَ أَمْوَالَهُمْ فِي سَبِيلِ اللَّهِ كَمَثَلِ حَبَّةٍ أَنْبَتَتْ سَبْعَ
-                سَنَابِلَ فِي كُلِّ سُنْبُلَةٍ مِائَةُ حَبَّةٍ وَاللَّهُ يُضَاعِفُ لِمَنْ يَشَاءُ وَاللَّهُ وَاسِعٌ
-                عَلِيمٌ
-                <span class="quran_decoration">]</span>
-                <span class="aya-surat">
-            <small>البقرة </small>
-            261
-          </span>
-            </h1>
+	<div class="ui inverted vertical masthead center aligned segment">
+		<div class="ui container">
+			<div class="ui inverted secondary pointing menu">
+				<a class="toc item"><i class="sidebar icon"></i></a>
+				<a class="item active" href="/">
+					Accueil
+				</a>
+				<a class="item" href="{% url 'association-list' %}">
+					Associations
+				</a>
+				<a class="item" href="{% url 'besoin-list' %}">
+					Besoins
+				</a>
+				<a class="item" href="{% url 'necessiteux-list' %}">
+					Nécessiteux
+				</a>
+				<a class="item" href="{% url 'help-page' %}">
+					Qui sommes-nous?
+				</a>
+				<div class="right item">
+					<a class="ui inverted sanabil-color hidden button contact-button" href="{% url 'contact-page' %}">
+						Contactez-nous
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="ui text container">
+			<h1 class="ui inverted header" id="aya" dir="rtl">
+				<span class="quran_decoration">[</span>
+				مَثَلُ الَّذِينَ يُنْفِقُونَ أَمْوَالَهُمْ فِي سَبِيلِ اللَّهِ كَمَثَلِ حَبَّةٍ أَنْبَتَتْ سَبْعَ
+				سَنَابِلَ فِي كُلِّ سُنْبُلَةٍ مِائَةُ حَبَّةٍ وَاللَّهُ يُضَاعِفُ لِمَنْ يَشَاءُ وَاللَّهُ وَاسِعٌ
+				عَلِيمٌ
+				<span class="quran_decoration">]</span>
+				<span class="aya-surat">
+            <span> الآية 261 من سورة البقرة </span>
+             </span>
+			</h1>
 
-            <a href="{% url 'contact-page' %}" class="ui huge inverted sanabil-color button">
-                Contactez-nous<i class="right arrow icon"></i>
-            </a>
-        </div>
-    </div>
+			<a href="{% url 'contact-page' %}" class="home ui huge inverted sanabil-color button">
+				Contactez-nous<i class="right arrow icon"></i>
+			</a>
+		</div>
+	</div>
 
-    <div class="ui vertical stripe segment">
-        <div class="ui text">
-            <h1 class="ui horizontal header divider">
-                <label class="text sanabil-color-accent">NOS</label> ACTIVITÉS
-            </h1>
-            <div class="ui equal width stackable internally celled grid">
-                <div class="ui activities center aligned row">
-                    <div class="column ">
-                        <div class="card">
-                            <i class="user secret huge sanabil-color icon"></i>
-                            <h4>
-                                Une confidentialité des données personnelles
-                            </h4>
-                            <p>
-                                Les données personnelles des nécessiteux ainsi que celles des donateurs demeureront invisibles et anonymes.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="card">
-                            <i class="clock huge sanabil-color icon"></i>
-                            <h4>
-                                Une traçabilité des données
-                            </h4>
-                            <p>
-                                Cette plateforme permet d’avoir une traçabilité de toutes les actions entreprises : gestion des dons, gestion des nécessiteux, gestion des besoins…
-                            </p>
-                        </div>
-                    </div>
-                    <div class="column ">
-                        <div class="card">
-                            <i class="shipping fast huge sanabil-color icon"></i>
-                            <h4>
-                                Une utilisation simple et rapide
-                            </h4>
-                            <p>
-Vous souhaitez offrir un pantalon ou un soulier de taille et de pointure bien précise,
-vous voulez faire don de médicaments pour des malades chroniques,
-vous êtes en possession d’un fauteuil roulant que vous voulez prêter ou donner à une personne atteint d’un handicap...IL VOUS SUFFIT D’UN SIMPLE CLIC SUR NOTRE PLATEFORME
+	<div class="ui vertical stripe segment">
+		<div class="ui text">
+			<h1 class="ui horizontal header divider">
+				<label class="text sanabil-color-accent">SANABIL</label> OFFRE
+			</h1>
+			<div class="ui equal width stackable internally celled grid">
+				<div class="ui activities center aligned row">
+					<div class="column ">
+						<div class="card">
+							<i class="shipping fast huge sanabil-color icon"></i>
+							<h4>
+								Une utilisation simple et rapide
+							</h4>
+							<p>
+								Vous souhaitez offrir un pantalon ou un soulier de taille et de pointure bien précise,
+								vous voulez faire don de médicaments pour des malades chroniques, vous êtes en
+								possession d’un fauteuil roulant que vous voulez prêter ou donner à une personne atteint
+								d’un handicap. <strong>Il vous suffit d’un simple clic sur notre plateforme.</strong>
 
-                            </p>
-                        </div>
-                    </div>
-	                  <div class="column ">
-                        <div class="card">
-                            <i class="users huge sanabil-color icon"></i>
-                            <h4>
-                               Disponibilité et accompagnement
+							</p>
+						</div>
+					</div>
+					<div class="column ">
+						<div class="card">
+							<i class="user secret huge sanabil-color icon"></i>
+							<h4>
+								Une confidentialité des données personnelles
+							</h4>
+							<p>
+								Les données personnelles des nécessiteux ainsi que celles des donateurs demeureront
+								invisibles et anonymes.
+							</p>
+						</div>
+					</div>
+					<div class="column">
+						<div class="card">
+							<i class="clock huge sanabil-color icon"></i>
+							<h4>
+								Une traçabilité des données
+							</h4>
+							<p>
+								Cette plateforme permet d’avoir une traçabilité de toutes les actions entreprises :
+								gestion des dons, gestion des nécessiteux, gestion des besoins…
+							</p>
+						</div>
+					</div>
 
-                            </h4>
-                            <p>Notre équipe reste disponible pour vous accompagner et s'engage à répondre dans les plus courts délais à toutes vos questions et préoccupations.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+					<div class="column ">
+						<div class="card">
+							<i class="users huge sanabil-color icon"></i>
+							<h4>
+								Disponibilité et accompagnement
+
+							</h4>
+							<p>Notre équipe reste disponible pour vous accompagner et s'engage à répondre dans les plus
+								courts délais à toutes vos questions et préoccupations.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}

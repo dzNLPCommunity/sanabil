@@ -1,0 +1,114 @@
+.ui.table.dataTable {
+  &_wrapper .dataTables {
+    &_filter {
+      text-align: right;
+      color: $color_black_87;
+      display: inline-flex;
+      position: relative;
+      input {
+        margin-left: 8px;
+      }
+    }
+    &_info {
+      clear: both;
+      padding-top: 12px;
+    }
+  }
+  thead {
+    th {
+      cursor: pointer;
+      white-space: nowrap;
+      border-left: 1px solid $color_shark_15_approx;
+      color: $color_black_87;
+      &:first-child {
+        border-left: none;
+      }
+      &:after {
+        display: none;
+        content: '';
+        height: 1em;
+        width: auto;
+        opacity: 0.8;
+        margin: 0 0 0 8px;
+        font-family: $color_font_0;
+      }
+      &:hover {
+        background: $color_black_5;
+        color: $color_black_80;
+      }
+      &.sorting_asc:after {
+        content: '\f160';
+      }
+      &.sorting_desc:after {
+        content: '\f161';
+      }
+      &.sorting:after {
+        content: '\f0dc';
+        opacity: 0.2;
+      }
+    }
+    .sorting {
+      user-select: none;
+      &:hover {
+        user-select: none;
+      }
+      &:after {
+        display: inline-block;
+      }
+    }
+    .sorting_asc, .sorting_desc, .sorting_asc_disabled, .sorting_desc_disabled {
+      @include user-select($color_black_95, $color_black_5);
+      &:hover {
+        @include user-select($color_black_95, $color_black_5);
+      }
+      &:after {
+        display: inline-block;
+      }
+    }
+
+  }
+  th.disabled:hover {
+    cursor: auto;
+    color: $color_shark_30_approx;
+  }
+}
+
+.dataTables_length select {
+  background: $color_white none repeat scroll 0 0;
+  border: 1px solid $color_shark_15_approx;
+  border-radius: 4px;
+  box-shadow: none;
+  color: $color_black_87;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 19px;
+  min-height: 11px;
+  outline: 0 none;
+  padding: 4px;
+  transform: rotateZ(0deg);
+  transition: box-shadow 0.1s ease 0s, width 0.1s ease 0s;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.dataTables_filter input {
+  background: $color_white none repeat scroll 0 0;
+  border: 1px dotted $color_sanabil;
+  border-radius: 8000px;
+  box-shadow: none;
+  color: $color_black_87;
+  flex: 1 0 auto;
+  height: 2em;
+  margin: 0;
+  max-width: 100%;
+  outline: 0 none;
+  padding: .4em;
+  text-align: left;
+  transition: background-color 0.1s ease 0s, box-shadow 0.1s ease 0s, border-color 0.1s ease 0s;
+}
+
+@media only screen and (max-width: 768px) {
+  .dt-buttons {
+    display: none!important;
+  }
+}

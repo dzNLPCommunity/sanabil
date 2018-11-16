@@ -1,0 +1,15 @@
+.contact_infos {
+  margin-top: 3%;
+  .row {
+    margin-bottom: 10px;
+  }
+  button {
+    float: right;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .navigator > .item:nth-child(n+2), .contact-button {
+    display: none !important;
+  }
+}

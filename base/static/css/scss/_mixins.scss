@@ -1,0 +1,5 @@
+@mixin user-select($color_select, $color_select_background) {
+  user-select: none;
+  color: $color_select;
+  background: $color_select_background;
+}
