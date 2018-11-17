@@ -11,12 +11,25 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = os.environ.get('DEBUG', False)
 
 
+ALLOWED_HOSTS = ['.sanabil.org']
+
+ADMINS = (('Assem Chelli', 'assem.ch@gmail.com'), )
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = os.environ.get('SENDGRID_USERNAME', False)
+EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_PASSWORD', False)
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
 if DEBUG:
     SECRET_KEY = '1tx6ee0l)64l68tl*6akdesms%uz8noqcrarl-2s1_z*^bgw(r'
+    ALLOWED_HOSTS += ['127.0.0.1','sanabil.herokuapp.com']
 else:
     SECRET_KEY = os.environ['SECRET_KEY']
 
-ALLOWED_HOSTS = ['127.0.0.1','sanabil.herokuapp.com', 'www.sanabil.org']
+
+
+
 
 
 # Application definition
@@ -140,6 +153,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 #JET THEME CONFIG
 JET_SIDE_MENU_COMPACT = True
-
 
 SECURE_SSL_REDIRECT = not DEBUG
