@@ -1,4 +1,4 @@
-.contact_infos {
+.contact-infos {
   margin-top: 3%;
   .row {
     margin-bottom: 10px;
@@ -10,6 +10,12 @@
 
 @media only screen and (max-width: 768px) {
   .navigator > .item:nth-child(n+2), .contact-button {
+    display: none !important;
+  }
+  .ui.grid > [class*="seven wide"].column{
+    width: 70% !important;
+  }
+  .contact-infos {
     display: none !important;
   }
 }
