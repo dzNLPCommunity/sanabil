@@ -25,7 +25,7 @@
                         <td>
                             {{ besoin.nom }}</td>
                         <td>
-                            {{ besoin.type.labels | default:"Autres" }}
+                            {{ besoin.type.label | default:"Autres" }}
                         </td>
                         <td>
                             {{ besoin.association.nom |default:"/" }}
@@ -52,7 +52,7 @@
                     </tr>
                     <div id="besoin-detail" class="ui modal">
                         <i class="close icon"></i>
-                        <div class="header">
+                        <div class="header text sanabil-color">
                             Détail du besoin
                         </div>
                         <div class="image content">
@@ -63,7 +63,7 @@
 	                             {% if besoin.description|length > 0 %}
 		                             <div class="item">
                                         <div class="content">
-                                            <a class="header">Description</a>
+                                            <a class="header text sanabil-color">Description</a>
                                             <div class="description">
                                                 {{ besoin.description }}
                                             </div>
@@ -72,7 +72,7 @@
 	                             {% endif %}
                                     <div class="item">
                                         <div class="content">
-                                            <a class="header">Association</a>
+                                            <a class="header text sanabil-color">Association</a>
                                             <div class="description">
                                                 <ul>
                                                     <li value="-"><b>Nom:</b> {{ besoin.association.nom | default:"/" }}
@@ -81,7 +81,7 @@
                                                         <b>Commune:</b> {{ besoin.association.commune | default:"/" }}
                                                     </li>
                                                     <li value="-">
-                                                        <b>Surnom:</b> {{ besoin.association.surnom | default:"/" }}
+                                                        <b>Adresse:</b> {{ besoin.association.address | default:"/" }}
                                                     </li>
                                                 </ul>
                                             </div>
@@ -92,7 +92,7 @@
                             </div>
                         </div>
                         <div class="actions">
-                            <div class="ui black deny button">
+                            <div class="ui sanabil-color deny button">
                                 Fermer
                             </div>
                         </div>

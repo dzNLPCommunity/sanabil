@@ -8,6 +8,7 @@
     }
     &.segment {
       border: none;
+      padding-bottom: 0;
     }
   }
   .grid {
@@ -39,7 +40,7 @@
 }
 
 .footer.segment {
-  padding: 20px 0 80px 0;
+  padding: 20px 0 80px 0!important;
   margin-top: 10px!important;
   i.icon {
     margin-bottom: 10%;

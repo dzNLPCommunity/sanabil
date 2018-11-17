@@ -19,12 +19,13 @@
   color: $color_sanabil !important;
 }
 
-.text.color_sanabil, h1.header, .header a, .ui.sanabil-color.button.inverted {
-  color: $color_sanabil;
+.text.sanabil-color, h1.header, .header a, .ui.sanabil-color.button.inverted {
+  color: $color_sanabil !important;
 }
 
 .contact-form .sanabil-color.button,
 .ui.footer .sanabil-color.button,
+.actions .sanabil-color.button,
 .ui.navigator .sanabil-color.button,
 .ui.sanabil-color.button:hover {
   color: $color_ghost_white !important;
@@ -40,6 +41,9 @@
   }
 }
 
+.ui.navigator .right.menu .item:hover {
+  border-bottom-color: transparent !important;
+}
 .masthead .logo.item img {
   margin-right: 16px;
 }
@@ -75,7 +79,14 @@
   .secondary.menu .toc.item, .ui.secondary.inverted.menu .toc.item, .silder-icon {
     display: block !important;
   }
-  .masthead h2 {
-    margin-top: 8px;
+  .masthead {
+    h2 {
+      margin-top: 8px;
+    }
+    .ui.sanabil-color.button.inverted {
+      font-size: 90%;
+      margin-bottom: 10%;
+    }
   }
+
 }

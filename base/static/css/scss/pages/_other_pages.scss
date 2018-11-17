@@ -10,6 +10,10 @@ td.detail-click, td.actions {
   text-align: center!important;
 }
 
+.about {
+  margin-bottom: 8% !important;
+}
+
 @media only screen and (max-width: 768px) {
   #associations-table_filter label {
     text-align: left;
@@ -19,19 +23,31 @@ td.detail-click, td.actions {
       width: 60% !important;
     }
   }
-  .contact_infos {
-    display: none !important;
-  }
   .logo-sanabil {
     width: 65% !important;
     margin-left: 15%;
   }
+  .about {
+    .ui.horizontal.divider {
+      display: inline-grid !important;
+    }
+  }
 }
 
+@media only screen and (min-width: 768px) {
+  .dataTables_filter {
+    label {
+      float: right;
+    }
+  }
+}
 @media only screen and (max-width: 400px) {
   #associations, #needs {
     &-table_wrapper .left.aligned.eight.wide.column {
       display: none !important;
+    }
+    td.actions {
+      text-align: left !important;
     }
   }
 }

@@ -7,7 +7,7 @@ from staff.models import Association
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from django.db.models import Count, Q
+from django.db.models import Sum, Count, Q
 
 from datetime import date
 from django.utils.timezone import now
@@ -51,31 +51,27 @@ class NecessiteuxData(APIView):
     def get(self, request, format=None):
         qs = Necessiteux.objects
         qsFamille = Famille.objects.all()
-        gender_qs = qs.annotate(count=Count('sexe'))
         gender_counts = [0, 0]
-        for person in gender_qs:
-            if person.sexe == 'F':
-                gender_counts[0] = person.count
-            else:
-                gender_counts[1] = person.count
-        gender_counts[0] = round(gender_counts[0] * 100 / (gender_counts[0]+gender_counts[1]), 2)
-        gender_counts[1] = 100 - gender_counts[0]
+        if qs.count() > 0:
+            gender_counts[0] = round(qs.filter(sexe='F').count() * 100 / (qs.count()), 2)
+            gender_counts[1] = 100 - gender_counts[0]
         gander_data = {
             "labels": ["Femmes", "Hommes"],
             "data": gender_counts,
         }
-        enfants = age_range(0, 18)
-        jeunes = age_range(19, 25)
-        adults = age_range(26, 59)
-        vieux = age_range(60, 150)
+        enfants = age_range(0, 15)
+        ados = age_range(15, 25)
+        adults = age_range(25, 65)
+        vieux = age_range(65, 150)
         age_counts = [0, 0, 0, 0]
         enfants_count = 0
         if qs.count() > 0:
-            age_qs = qs.values('date_de_naissance').annotate(enfants=enfants, jeunes=jeunes, adults=adults, vieux=vieux)
-            age_counts = [age_qs.filter(enfants=1).count(), age_qs.filter(jeunes=1).count(), age_qs.filter(adults=1).count(), age_qs.filter(vieux=1).count()]
+            age_qs = qs.values('date_de_naissance').annotate(enfants=enfants, ados=ados, adults=adults, vieux=vieux)
+            age_sums = age_qs.aggregate(enfants_sum=Sum('enfants'), ados_sum=Sum('ados'), adults_sum=Sum('adults'), vieux_sum=Sum('vieux'))
+            age_counts = [age_sums['enfants_sum'], age_sums['ados_sum'], age_sums['adults_sum'], age_sums['vieux_sum']]
             enfants_count = age_counts[0]
         age_data = {
-            "labels": ["Enfants", "Jeunes", "Adultes", "Vieux"],
+            "labels": ["Enfants", "Adolescents", "Adultes", "Vieux"],
             "data": age_counts,
         }
         numbers = {'totale': qs.count(), 'familles': qsFamille.count(),
