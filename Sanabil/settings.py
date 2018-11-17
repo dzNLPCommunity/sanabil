@@ -140,3 +140,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 #JET THEME CONFIG
 JET_SIDE_MENU_COMPACT = True
+
+
+SECURE_SSL_REDIRECT = not DEBUG
