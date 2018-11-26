@@ -1,5 +1,5 @@
 from django.db import models
-
+from datetime import date
 from base.models import Commune, NiveauScolaire, SituationFamiliale, SituationProfessionelle, CentreType, \
     DonType, DonneurType
 from staff.models import Membre, Association
@@ -32,6 +32,11 @@ class Necessiteux(models.Model):
     appartient_famille = models.ForeignKey(Famille, on_delete=models.SET_NULL, blank=True, null=True)
     represent_famille = models.BooleanField(default=False)
     archivé = models.BooleanField(default=False)
+
+    def get_age(self):
+        today = date.today()
+        date_naissance = self.date_de_naissance
+        return today.year - date_naissance.year - ((today.month, today.day) < (date_naissance.month, date_naissance.day))
 
     class Meta:
         verbose_name_plural = "Nécessiteux"

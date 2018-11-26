@@ -16,7 +16,6 @@
                     <th>Montant</th>
                     <th>Urgent</th>
                     <th>Date limite</th>
-                    <th>Autres détails</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -42,12 +41,6 @@
                         </td>
                         <td>
                             {{ besoin.date_limite |default:"/" }}
-                        </td>
-                        <td class="detail-click">
-                            <a href="#" class="zoom-icon">
-                                <i class="large sanabil-color zoom icon"></i>
-                            </a>
-
                         </td>
                     </tr>
                     <div id="besoin-detail" class="ui modal">
@@ -99,7 +92,6 @@
                     </div>
                 {% empty %}
                     <td>Aucun besoin est ajouté pour le moment</td>
-                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
