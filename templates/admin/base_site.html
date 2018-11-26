@@ -1,6 +1,6 @@
 {% extends "admin/base.html" %}
 {% load admin_static %}
-
+{% block extrahead %}
     <link rel="apple-touch-icon" sizes="57x57" href="/static/images/fav.ico">
     <link rel="apple-touch-icon" sizes="60x60" href="/static/images/fav.ico">
     <link rel="apple-touch-icon" sizes="72x72" href="/static/images/fav.ico">
@@ -15,7 +15,7 @@
     <link rel="icon" type="image/png" sizes="96x96" href="/static/images/fav.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="/static/images/fav.ico">
     <title>{% block title %} Administration {% endblock %}</title>
-
+{% endblock %}
 
 {# Additional CSS includes #}
 {#{% block extrastyle %}#}

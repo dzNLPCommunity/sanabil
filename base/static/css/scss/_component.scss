@@ -5,21 +5,24 @@
   }
 }
 
-.ui.secondary.pointing.menu .item {
+.ui.secondary.pointing.menu{
+  border-color: transparent!important;
+  .item {
   &.active, &:hover {
     border-color: $color_sanabil_accent !important;
     color: $color_sanabil_accent !important;
   }
   &:hover {
-    transition: border-color 0s ease-out 0.2s;
+    transition: all 1s ease-out;
   }
+}
 }
 
 .text.color_sanabil, h1.header, .header a {
   color: $color_sanabil !important;
 }
 
-.text.sanabil-color, h1.header, .header a, .ui.sanabil-color.button.inverted {
+.text.sanabil-color, h1.header, .header a {
   color: $color_sanabil !important;
 }
 
@@ -32,14 +35,7 @@
   background-color: $color_sanabil !important;
 }
 
-.ui.sanabil-color.button.inverted {
-  background-color: transparent;
-  box-shadow: 0 0 0 2px $color_sanabil inset !important;
-  &home:hover {
-    background-color: $color_sanabil;
-    color: $color_ghost_white !important;
-  }
-}
+
 
 .ui.navigator .right.menu .item:hover {
   border-bottom-color: transparent !important;

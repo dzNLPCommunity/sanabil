@@ -1,9 +1,24 @@
 .masthead {
-  .ui.secondary.inverted.pointing.menu {
-    border: none;
-    a.item:hover, .active.item {
-      border-color: $color_ghost_white !important;
-      color: $color_ghost_white !important;
+  &.lazy {
+   background-image: none;
+   background-color: $color_black_80;
+  }
+  min-height: 500px !important;
+  padding: 1em 0 !important;
+  opacity: 0.9 !important;
+  position: relative !important;
+  background-color: black !important;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(11, 1, 1, 0.5)), url("../../images/2.jpeg") !important;
+  background-position: 10% 40% !important;
+  .ui.sanabil-color.button.inverted {
+    background-color: transparent;
+    box-shadow: 0 0 0 2px $color_ghost_white inset !important;
+    &.home:hover {
+      transition: all 0.6s linear;
+      opacity: 0.9;
+      border: transparent !important;
+      background-color: $color_ghost_white!important;
+      color: $color_black_80 !important;
     }
   }
 }
@@ -20,7 +35,7 @@
   .aya-surat {
     font-family: 'Amiri', serif;
     font-size: 14px;
-    color: $color_light_sanabil;
+    color: $color_sanabil_accent;
   }
 }
 
@@ -32,7 +47,7 @@
     height: 150px;
   }
   .card {
-    cursor: pointer;
+    cursor: context-menu;
     margin: 20px 0 20px 0;
     transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
     border-radius: 20px;

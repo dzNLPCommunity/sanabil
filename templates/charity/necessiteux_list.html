@@ -31,13 +31,21 @@
 							{% endif %}
 						</td>
 						<td>
-							{{ needy.get_age |default:"/" }}
+							{{ needy.get_age }}
 						</td>
 						<td>
 							{{ needy.taille }}
 						</td>
 						<td>
-							{{ needy.taille }}
+							{% if needy.get_need %}
+								{% for need in needy.get_need %}
+									{{ need|safe }},
+								{% endfor %}
+							{% else %}
+								/
+							{% endif %}
+
+
 						</td>
 						<td>
 							{{ needy.association.nom }}

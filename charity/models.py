@@ -33,6 +33,11 @@ class Necessiteux(models.Model):
     represent_famille = models.BooleanField(default=False)
     archivé = models.BooleanField(default=False)
 
+    def get_need(self):
+        needs_qs = Besoin.objects.filter(necessiteux=self.id).values_list('nom', flat=True)
+        print(needs_qs)
+        return list(needs_qs)
+
     def get_age(self):
         today = date.today()
         date_naissance = self.date_de_naissance
