@@ -35,6 +35,12 @@
                     const embed = "<iframe width='450' height='300' frameborder='0' scrolling='no'  marginheight='0' marginwidth='0' src='https://maps.google.com/maps?&amp;q=" + encodeURIComponent($(this).text()) + "&amp;output=embed'></iframe>";
                     $(this).html(embed);
                 });
+                $("addresslink").each(function () {
+                    const address = $(this).text().trim().replace(/\,/g, ' '); // get rid of commas
+                    const url = address.replace(/\ /g, '%20'); // convert address into approprite URI for google maps
+	                const classes =  $(this).attr('class');
+                    $(this).replaceWith('<a class="'+classes+'" href="http://maps.google.com/maps?q=' + url + '" target="_blank"><i class="map marker alternate icon"></i></a>').attr( "class", classes);
+                });
                  $("#needs-table").on('click', 'tr', function () {
                     $("#besoin-detail").modal('show');
                 });

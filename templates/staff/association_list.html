@@ -50,6 +50,10 @@
                                 tiny circular youtube icon button">
                                     <i class="youtube icon"></i>
                                 </a>
+	                            <addresslink class="ui
+                                  {% if association.address == None %}disabled{% endif %}
+                                tiny circular map marker alternate icon teal button">{{ association.address }}
+	                            </addresslink>
                             </div>
                         </td>
                     </tr>
