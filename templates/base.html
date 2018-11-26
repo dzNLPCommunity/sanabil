@@ -31,6 +31,10 @@
     <script>
         $(document)
             .ready(function () {
+                $("address").each(function () {
+                    const embed = "<iframe width='450' height='300' frameborder='0' scrolling='no'  marginheight='0' marginwidth='0' src='https://maps.google.com/maps?&amp;q=" + encodeURIComponent($(this).text()) + "&amp;output=embed'></iframe>";
+                    $(this).html(embed);
+                });
                  $("#needs-table").on('click', 'tr', function () {
                     $("#besoin-detail").modal('show');
                 });

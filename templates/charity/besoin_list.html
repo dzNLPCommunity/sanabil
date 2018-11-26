@@ -52,7 +52,7 @@
                             <div class="description">
                                 <div class="ui header">{{ besoin.nom }}</div>
                                 <p>
-                                <div class="ui relaxed divided list horizontal">
+	                            <div class="ui equally divided list horizontal">
 	                             {% if besoin.description|length > 0 %}
 		                             <div class="item">
                                         <div class="content">
@@ -66,18 +66,24 @@
                                     <div class="item">
                                         <div class="content">
                                             <a class="header text sanabil-color">Association</a>
-                                            <div class="description">
-                                                <ul>
-                                                    <li value="-"><b>Nom:</b> {{ besoin.association.nom | default:"/" }}
-                                                    </li>
-                                                    <li value="-">
-                                                        <b>Commune:</b> {{ besoin.association.commune | default:"/" }}
-                                                    </li>
-                                                    <li value="-">
-                                                        <b>Adresse:</b> {{ besoin.association.address | default:"/" }}
-                                                    </li>
-                                                </ul>
-                                            </div>
+	                                        <div class="ui equal width grid">
+		                                        <div class="description column">
+	                                                <ul>
+	                                                    <li value="-"><b>Nom:</b> {{ besoin.association.nom | default:"/" }}
+	                                                    </li>
+	                                                    <li value="-">
+	                                                        <b>Commune:</b> {{ besoin.association.commune | default:"/" }}
+	                                                    </li>
+	                                                    <li value="-">
+	                                                        <b>Adresse:</b> {{ besoin.association.address | default:"/" }}
+	                                                    </li>
+	                                                </ul>
+                                               </div>
+		                                        <div class="map column">
+			                                        <address>{{ besoin.association.address | default:"/" }}</address>
+		                                        </div>
+	                                        </div>
+
                                         </div>
                                     </div>
                                 </div>
