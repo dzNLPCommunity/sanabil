@@ -1,113 +1,66 @@
 {% extends 'base.html' %}
 
-{% block title %} Nécessiteux  {% endblock %}
-
+{% block title %} Nécessiteux {% endblock %}
 
 {% block content %}
-    <div class="needy-stats ui vertical stripe segment">
-        <div class="ui text center aligned container">
-            <h1 class="ui horizontal header divider">
-                <label class="text sanabil-color-accent">STAT</label>ISTIQUES
-            </h1>
-            <p>
-            <div class="ui statistics">
-                <div class="huge olive statistic">
-                    <div id="totale" class="value">
-                    </div>
-                    <div class="label">
-                        Nécessiteux
-                    </div>
-                </div>
-                <div class="huge brown statistic">
-                    <div id="familles" class="value">
-                    </div>
-                    <div class="label">
-                        Familles
-                    </div>
-                </div>
-                <div class="huge orange statistic">
-                    <div id="enfants" class="value">
-                    </div>
-                    <div class="label">
-                        Enfants
-                    </div>
-                </div>
-            </div>
-            </p>
-            <div class="ui equal width stackable internally celled grid">
-                <div class="center aligned row">
-                    <div class="column">
-                        <h4>
-                            La distribution des nécessiteux par sex ( % )
-                        </h4>
-                        <p class="needs-charts">
-                            <canvas id="needs-charts-gender" width="200" height="300"></canvas>
-                        </p>
-                    </div>
-                    <div class="column">
-                        <h4>
-                            La distribution des nécessiteux par tranche d'âge
-                        </h4>
-                        <p>
-                            <canvas id="needs-charts-age" width="400" height="400"></canvas>
-                        </p>
-                    </div>
-                </div>
-            </div>
+	<div class="ui main container">
+		<p></p>
+		<div class="ui raised segment">
+			<table id="needy-table" class="ui compact selectable striped celled table" cellspacing="0" width="100%">
+				<thead>
+				<tr>
+					<th>Code</th>
+					<th>Sexe</th>
+					<th>Age</th>
+					<th>Taille</th>
+					<th>Besoins</th>
+					<th>Association à laquelle il appartient</th>
+				</tr>
+				</thead>
+				<tbody>
+				{% for needy in object_list %}
+					<tr>
+						<td>
+							{{ needy.id }}
+						</td>
+						<td>
+							{% if needy.sexe == 'F' %}
+								Féminin
+							{% else %}
+								Masculin
+							{% endif %}
+						</td>
+						<td>
+							{{ needy.get_age }}
+						</td>
+						<td>
+							{{ needy.taille }}
+						</td>
+						<td>
+							{% if needy.get_need %}
+								{% for need in needy.get_need %}
+									{{ need|safe }},
+								{% endfor %}
+							{% else %}
+								/
+							{% endif %}
+
+
+						</td>
+						<td>
+							{{ needy.association.nom }}
+						</td>
+					</tr>
+				{% empty %}
+					<td>Aucun nécessiteux est ajouté pour le moment</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				{% endfor %}
+				</tbody>
+			</table>
         </div>
     </div>
 {% endblock %}
-{% block extra_js %}
-    $(document).ready(function () {
-    const endpoint = '/necessiteux/data/';
-    $.ajax({
-    method: "GET",
-    url: endpoint,
-    success: function (data) {
-    setChart(data);
-    },
-    error: function (error) {
-    console.log("error", error);
-    }
-    });
-
-    function setChart(data) {
-	console.log(data);
-    $('#totale').html(data.numbers.totale);
-    $('#familles').html(data.numbers.familles);
-    $('#enfants').html(data.numbers.enfants);
-    let ctx = document.getElementById('needs-charts-gender').getContext('2d');
-    const chart = new Chart(ctx, {
-    type: 'doughnut',
-    // data are percentages
-    data: {
-    labels: data.gander_data.labels,
-    datasets: [{
-    label: "Les nécessiteux par sex",
-    backgroundColor: ['rgb(255, 99, 132)', 'rgb(63, 173, 255)'],
-    borderColor: ['rgb(255, 99, 132)', 'rgb(63, 173, 255)'],
-    data: data.gander_data.data,
-    }]
-    },
-    options: {}
-    });
-    let ctx_age = document.getElementById('needs-charts-age').getContext('2d');
-    const chart_age = new Chart(ctx_age, {
-    type: 'bar',
-    // data are percentages
-    data: {
-    labels: data.age_data.labels,
-    datasets: [{
-    label: "Les nécessiteux par age",
-    backgroundColor: ['olive', 'lightsalmon', 'lightsanabil-color', 'lightcoral'],
-    borderColor: ['olive', 'lightsalmon', 'lightsanabil-color', 'lightcoral'],
-    data: data.age_data.data,
-    }]
-    },
-    options: {}
-    });
-    }
-    });
-{% endblock extra_js %}
-
-

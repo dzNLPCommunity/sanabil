@@ -14,6 +14,17 @@ td.detail-click, td.actions {
   margin-bottom: 8% !important;
 }
 
+table#needy-table {
+  th, td {
+    text-align: center;
+  }
+}
+
+table#needs-table {
+  tr {
+    cursor: pointer;
+  }
+}
 @media only screen and (max-width: 768px) {
   #associations-table_filter label {
     text-align: left;
@@ -35,6 +46,11 @@ td.detail-click, td.actions {
 }
 
 @media only screen and (min-width: 768px) {
+  table#needy-table {
+    th, td {
+      text-align: left !important;
+    }
+  }
   .dataTables_filter {
     label {
       float: right;
@@ -42,7 +58,7 @@ td.detail-click, td.actions {
   }
 }
 @media only screen and (max-width: 400px) {
-  #associations, #needs {
+  #associations, #needs, #needy {
     &-table_wrapper .left.aligned.eight.wide.column {
       display: none !important;
     }

@@ -16,7 +16,6 @@
                     <th>Montant</th>
                     <th>Urgent</th>
                     <th>Date limite</th>
-                    <th>Autres détails</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -43,12 +42,6 @@
                         <td>
                             {{ besoin.date_limite |default:"/" }}
                         </td>
-                        <td class="detail-click">
-                            <a href="#" class="zoom-icon">
-                                <i class="large sanabil-color zoom icon"></i>
-                            </a>
-
-                        </td>
                     </tr>
                     <div id="besoin-detail" class="ui modal">
                         <i class="close icon"></i>
@@ -59,7 +52,7 @@
                             <div class="description">
                                 <div class="ui header">{{ besoin.nom }}</div>
                                 <p>
-                                <div class="ui relaxed divided list horizontal">
+	                            <div class="ui equally divided list horizontal">
 	                             {% if besoin.description|length > 0 %}
 		                             <div class="item">
                                         <div class="content">
@@ -73,18 +66,24 @@
                                     <div class="item">
                                         <div class="content">
                                             <a class="header text sanabil-color">Association</a>
-                                            <div class="description">
-                                                <ul>
-                                                    <li value="-"><b>Nom:</b> {{ besoin.association.nom | default:"/" }}
-                                                    </li>
-                                                    <li value="-">
-                                                        <b>Commune:</b> {{ besoin.association.commune | default:"/" }}
-                                                    </li>
-                                                    <li value="-">
-                                                        <b>Adresse:</b> {{ besoin.association.address | default:"/" }}
-                                                    </li>
-                                                </ul>
-                                            </div>
+	                                        <div class="ui equal width grid">
+		                                        <div class="description column">
+	                                                <ul>
+	                                                    <li value="-"><b>Nom:</b> {{ besoin.association.nom | default:"/" }}
+	                                                    </li>
+	                                                    <li value="-">
+	                                                        <b>Commune:</b> {{ besoin.association.commune | default:"/" }}
+	                                                    </li>
+	                                                    <li value="-">
+	                                                        <b>Adresse:</b> {{ besoin.association.address | default:"/" }}
+	                                                    </li>
+	                                                </ul>
+                                               </div>
+		                                        <div class="map column">
+			                                        <address>{{ besoin.association.address | default:"/" }}</address>
+		                                        </div>
+	                                        </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -99,7 +98,6 @@
                     </div>
                 {% empty %}
                     <td>Aucun besoin est ajouté pour le moment</td>
-                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>

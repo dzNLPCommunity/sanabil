@@ -109,5 +109,58 @@
 				</div>
 			</div>
 		</div>
+		{% include "charity/statistiques.html" %}
 	</div>
 {% endblock %}
+{% block extra_js %}
+	$(document).ready(function () {
+	const endpoint = '/necessiteux/data/';
+	$.ajax({
+	method: "GET",
+	url: endpoint,
+	success: function (data) {
+	setChart(data);
+	},
+	error: function (error) {
+	console.log("error", error);
+	}
+	});
+
+	function setChart(data) {
+	console.log(data);
+	$('#totale').html(data.numbers.totale);
+	$('#familles').html(data.numbers.familles);
+	$('#enfants').html(data.numbers.enfants);
+	let ctx = document.getElementById('needs-charts-gender').getContext('2d');
+	const chart = new Chart(ctx, {
+	type: 'doughnut',
+	// data are percentages
+	data: {
+	labels: data.gander_data.labels,
+	datasets: [{
+	label: "Les nécessiteux par sexe",
+	backgroundColor: ['rgb(255, 99, 132)', 'rgb(63, 173, 255)'],
+	borderColor: ['rgb(255, 99, 132)', 'rgb(63, 173, 255)'],
+	data: data.gander_data.data,
+	}]
+	},
+	options: {}
+	});
+	let ctx_age = document.getElementById('needs-charts-age').getContext('2d');
+	const chart_age = new Chart(ctx_age, {
+	type: 'bar',
+	// data are percentages
+	data: {
+	labels: data.age_data.labels,
+	datasets: [{
+	label: "Les nécessiteux par age",
+	backgroundColor: ['olive', 'lightsalmon', 'lightsanabil-color', 'lightcoral'],
+	borderColor: ['olive', 'lightsalmon', 'lightsanabil-color', 'lightcoral'],
+	data: data.age_data.data,
+	}]
+	},
+	options: {}
+	});
+	}
+	});
+{% endblock extra_js %}

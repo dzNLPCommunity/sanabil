@@ -34,6 +34,7 @@ def helppage(request):
 
 class NecessiteuxListView(ListView):
     model = Necessiteux
+    ordering = ['-id']
     paginate_by = 10
 
 
@@ -87,6 +88,7 @@ class AideRecuListView(ListView):
 
 class BesoinListView(ListView):
     model = Besoin
+    ordering = ['-nom']
 
     def get_satisfied_needs(self):
         return self.model.objects.get(est_satisfait=True)
