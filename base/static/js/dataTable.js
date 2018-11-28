@@ -179,4 +179,8 @@ $(document).ready(function () {
         "language": fr_FR
     });
 
+    $(".detail-click").click(function () {
+        const id = $(this).attr('id');
+        $("#besoin-detail"+id).modal('show');
+    });
 });

@@ -5,7 +5,7 @@ from django.views.static import serve
 from base.views import contact_view, contact_success_view
 from charity import views as charity_views
 from Sanabil import settings
-from charity.views import NecessiteuxListView, NecessiteuxData, AideRecuListView, BesoinListView
+from charity.views import NecessiteuxListView, NecessiteuxData, AideRecuListView, BesoinListView, BesoinDetailView
 from staff.views import AssociationListView
 
 
@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^necessiteux/data/$', NecessiteuxData.as_view()),
     url(r'^necessiteux/?', NecessiteuxListView.as_view(), name='necessiteux-list'),
     url(r'^besoins/?', BesoinListView.as_view(), name='besoin-list'),
+    url(r'^besoins/(?P<pk>\d+)/?$', BesoinDetailView.as_view(), name='besoin-detail'),
     url(r'^aides/?', AideRecuListView.as_view(), name='aiderecu-list'),
     url(r'^about/?', charity_views.helppage, name='help-page'),
     url(r'^contact/', contact_view, name='contact-page'),
