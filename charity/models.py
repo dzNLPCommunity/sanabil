@@ -35,7 +35,6 @@ class Necessiteux(models.Model):
 
     def get_need(self):
         needs_qs = Besoin.objects.filter(necessiteux=self.id).values_list('nom', flat=True)
-        print(needs_qs)
         return list(needs_qs)
 
     def get_age(self):
