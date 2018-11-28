@@ -30,7 +30,9 @@
 .ui.footer .sanabil-color.button,
 .actions .sanabil-color.button,
 .ui.navigator .sanabil-color.button,
-.ui.sanabil-color.button:hover {
+.ui.sanabil-color.button:hover,
+.sanabil-color.button a,
+.ui.sanabil-color.button a:hover {
   color: $color_ghost_white !important;
   background-color: $color_sanabil !important;
 }
