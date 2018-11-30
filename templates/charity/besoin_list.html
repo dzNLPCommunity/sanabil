@@ -4,7 +4,7 @@
 
 
 {% block content %}
-    <div class="ui main container">
+	<div class="ui main container besoins">
         <p></p>
         <div class="ui raised segment">
             <table id="needs-table" class="ui compact selectable striped celled table" cellspacing="0" width="100%">
@@ -16,13 +16,15 @@
                     <th>Montant</th>
                     <th>Urgent</th>
                     <th>Date limite</th>
+	                <th>Autres détails</th>
                 </tr>
                 </thead>
                 <tbody>
                 {% for besoin in object_list %}
                     <tr>
                         <td>
-                            {{ besoin.nom }}</td>
+	                        {{ besoin.nom }}
+                        </td>
                         <td>
                             {{ besoin.type.label | default:"Autres" }}
                         </td>
@@ -42,62 +44,66 @@
                         <td>
                             {{ besoin.date_limite |default:"/" }}
                         </td>
-                    </tr>
-                    <div id="besoin-detail" class="ui modal">
-                        <i class="close icon"></i>
-                        <div class="header text sanabil-color">
-                            Détail du besoin
-                        </div>
-                        <div class="image content">
-                            <div class="description">
-                                <div class="ui header">{{ besoin.nom }}</div>
-                                <p>
-	                            <div class="ui equally divided list horizontal">
-	                             {% if besoin.description|length > 0 %}
-		                             <div class="item">
-                                        <div class="content">
-                                            <a class="header text sanabil-color">Description</a>
-                                            <div class="description">
-                                                {{ besoin.description }}
-                                            </div>
-                                        </div>
-                                    </div>
-	                             {% endif %}
-                                    <div class="item">
-                                        <div class="content">
-                                            <a class="header text sanabil-color">Association</a>
-	                                        <div class="ui equal width grid">
-		                                        <div class="description column">
-	                                                <ul>
-	                                                    <li value="-"><b>Nom:</b> {{ besoin.association.nom | default:"/" }}
-	                                                    </li>
-	                                                    <li value="-">
-	                                                        <b>Commune:</b> {{ besoin.association.commune | default:"/" }}
-	                                                    </li>
-	                                                    <li value="-">
-	                                                        <b>Adresse:</b> {{ besoin.association.address | default:"/" }}
-	                                                    </li>
-	                                                </ul>
-                                               </div>
-		                                        <div class="map column">
-			                                        <address>{{ besoin.association.address | default:"/" }}</address>
-		                                        </div>
-	                                        </div>
+	                    <td class="detail-click" id="{{ besoin.id }}">
+		                    <a href="#" class="zoom-icon">
+			                    <i class="large sanabil-color zoom icon"></i>
+		                    </a>
 
-                                        </div>
-                                    </div>
-                                </div>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="actions">
-                            <div class="ui sanabil-color deny button">
-                                Fermer
-                            </div>
-                        </div>
-                    </div>
+	                    </td>
+                    </tr>
+	                <div id="besoin-detail{{ besoin.id }}" class="ui modal">
+		                <i class="close icon"></i>
+		                <div class="header text sanabil-color">
+			                Détail du besoin
+		                </div>
+		                <div class="image content">
+			                <div class="description">
+				                <div class="ui header">{{ besoin.nom }}</div>
+				                <p>
+				                <div class="ui equally divided list horizontal">
+					                {% if besoin.description|length > 0 %}
+						                <div class="item">
+							                <div class="content">
+								                <a class="header text sanabil-color">Description</a>
+								                <div class="description">
+									                {{ besoin.description }}
+								                </div>
+							                </div>
+						                </div>
+					                {% endif %}
+					                <div class="item">
+						                <div class="content">
+							                <a class="header text sanabil-color">Association</a>
+							                <div class="description">
+								                <ul>
+									                <li value="-"><b>Nom:</b> {{ besoin.association.nom | default:"/" }}
+									                </li>
+									                <li value="-">
+										                <b>Commune:</b> {{ besoin.association.commune | default:"/" }}
+									                </li>
+									                <li value="-">
+										                <b>Adresse:</b> {{ besoin.association.address | default:"/" }}
+									                </li>
+								                </ul>
+							                </div>
+						                </div>
+					                </div>
+				                </div>
+				                </p>
+				                <div class="map row">
+					                <address>{{ besoin.association.address | default:"/" }}</address>
+				                </div>
+			                </div>
+		                </div>
+		                <div class="actions">
+			                <div class="ui sanabil-color deny button">
+				                Fermer
+			                </div>
+		                </div>
+	                </div>
                 {% empty %}
                     <td>Aucun besoin est ajouté pour le moment</td>
+	                <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
