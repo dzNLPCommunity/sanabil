@@ -1,3 +1,6 @@
+.body-content {
+  padding-bottom: $footer-height;
+}
 .ui {
   &.vertical {
     &.stripe {
@@ -40,8 +43,11 @@
 }
 
 .footer.segment {
-  padding: 20px 0 80px 0!important;
   margin-top: 10px!important;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: $footer-height;
   i.icon {
     margin-bottom: 10%;
   }
@@ -54,7 +60,17 @@
 }
 
 @media only screen and (max-width: 768px) {
-
+  .needs-charts canvas {
+    margin-left: 20% !important;
+    height: 60% !important;
+    width: 60% !important;
+  }
+  table#needy-table th, table#needy-table td {
+    text-align: left !important;
+  }
+  .body-content {
+    padding-bottom: 720px !important;
+  }
   .masthead.segment {
     min-height: 350px;
     .menu {
@@ -65,6 +81,7 @@
     }
   }
   .footer {
+    height: 700px !important;
     button.contact {
       margin-left: 25%;
     }
