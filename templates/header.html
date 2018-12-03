@@ -1,9 +1,9 @@
 <div class="ui secondary pointing menu {% if request.resolver_match.url_name == 'home-page' %}hidden{% endif %} ">
     <div class="ui container navigator">
         <a class="toc item silder-icon"><i class="sidebar icon"></i></a>
-        <a class="item" href="/">
-            Accueil
-        </a>
+	    <a class="item logo" href="/">
+		    <img src="/static/images/sanabil-logo.png">
+	    </a>
         <a class="item {% if request.resolver_match.url_name == 'association-list' %}active{% endif %}"
            href="{% url 'association-list' %}">
             Associations
@@ -31,9 +31,9 @@
 </div>
 <!--Sidebar Menu-->
 <div class="ui vertical inverted sidebar menu">
-    <a class="item" href="/">
-        Accueil
-    </a>
+	<a class="item logo" href="/">
+		<img src="/static/images/sanabil-logo.png">
+	</a>
     <a class="item {% if request.resolver_match.url_name == 'association-list' %}active{% endif %}"
        href="{% url 'association-list' %}">
         Associations

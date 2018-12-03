@@ -6,6 +6,7 @@
 }
 
 .ui.secondary.pointing.menu{
+
   border-color: transparent!important;
   .item {
   &.active, &:hover {
@@ -15,6 +16,15 @@
   &:hover {
     transition: all 0.5s ease-out;
   }
+    &.logo, &.logo:hover {
+      transform: scale(1.3);
+      padding-bottom: 5px;
+      padding-right: 20px;
+      padding-left: 10px;
+
+      border-color: transparent !important;
+      color: transparent !important;
+    }
 }
 }
 
@@ -73,6 +83,9 @@
 @media only screen and (max-width: 768px) {
   .ui.fixed.menu, .ui.secondary.inverted.menu a.item {
     display: none !important;
+  }
+  a.item.logo img{
+        width: 30% !important;
   }
   .secondary.menu .toc.item, .ui.secondary.inverted.menu .toc.item, .silder-icon {
     display: block !important;
