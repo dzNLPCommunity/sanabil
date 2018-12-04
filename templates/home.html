@@ -114,51 +114,65 @@
 {% endblock %}
 {% block extra_js %}
 	$(document).ready(function () {
-	const endpoint = '/necessiteux/data/';
-	$.ajax({
-	method: "GET",
-	url: endpoint,
-	success: function (data) {
-	setChart(data);
-	},
-	error: function (error) {
-	}
-	});
+    const endpoint = '/necessiteux/data/';
+    $.ajax({
+        method: "GET",
+        url: endpoint,
+        success: function (data) {
+            setChart(data);
+        },
+        error: function (error) {
+        }
+    });
 
-	function setChart(data) {
-	$('#totale').html(data.numbers.totale);
-	$('#familles').html(data.numbers.familles);
-	$('#enfants').html(data.numbers.enfants);
-	let ctx = document.getElementById('needs-charts-gender').getContext('2d');
-	const chart = new Chart(ctx, {
-	type: 'doughnut',
-	// data are percentages
-	data: {
-	labels: data.gander_data.labels,
-	datasets: [{
-	label: "Les nécessiteux par sexe",
-	backgroundColor: ['rgb(255, 99, 132)', 'rgb(63, 173, 255)'],
-	borderColor: ['rgb(255, 99, 132)', 'rgb(63, 173, 255)'],
-	data: data.gander_data.data,
-	}]
-	},
-	options: {}
-	});
-	let ctx_age = document.getElementById('needs-charts-age').getContext('2d');
-	const chart_age = new Chart(ctx_age, {
-	type: 'bar',
-	// data are percentages
-	data: {
-	labels: data.age_data.labels,
-	datasets: [{
-	label: "Les nécessiteux par age",
-	backgroundColor: ['olive', 'lightsalmon', 'teal', 'lightcoral'],
-	borderColor: ['olive', 'lightsalmon', 'teal', 'lightcoral'],
-	data: data.age_data.data,
-	}]
-	},
-	options: {}
-	});
-	}
-	});
+    function setChart(data) {
+        $('#totale').html(data.numbers.totale);
+        $('#familles').html(data.numbers.familles);
+        $('#enfants').html(data.numbers.enfants);
+        let ctx = document.getElementById('needs-charts-gender').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'doughnut',
+            // data are percentages
+            data: {
+                labels: data.gander_data.labels,
+                datasets: [{
+                    label: "Les nécessiteux par sexe",
+                    backgroundColor: ['rgb(255, 99, 132)', 'rgb(63, 173, 255)'],
+                    borderColor: ['rgb(255, 99, 132)', 'rgb(63, 173, 255)'],
+                    data: data.gander_data.data,
+                }]
+            },
+            options: {}
+        });
+        let ctx_age = document.getElementById('needs-charts-age').getContext('2d');
+        const chart_age = new Chart(ctx_age, {
+            type: 'bar',
+            // data are percentages
+            data: {
+                labels: data.age_data.labels,
+                datasets: [{
+                    label: "Les nécessiteux par age",
+                    backgroundColor: ['#FFA07A', '#DB7093', '#008080', '#008080'],
+                    borderColor: ['#FFA07A', '#DB7093', '#008080', '#008080'],
+                    data: data.age_data.data,
+                }]
+            },
+            options: {
+			     scales: {
+			         yAxes: [{
+			             ticks: {
+			                 beginAtZero: true,
+			                 userCallback: function(label, index, labels) {
+			                     if (Math.floor(label) === label) {
+			                         return label;
+			                     }
+
+			                 },
+			             }
+			         }],
+			     },
+			}
+        });
+    }
+});
 {% endblock extra_js %}
