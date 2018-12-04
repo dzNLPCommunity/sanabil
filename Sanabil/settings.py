@@ -8,7 +8,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', True)
+DEBUG = os.environ.get('DEBUG', False)
 
 
 if DEBUG:
@@ -139,4 +139,4 @@ DEBUG_TOOLBAR_CONFIG = {
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 #JET THEME CONFIG
-JET_SIDE_MENU_COMPACT = True
+JET_SIDE_MENU_COMPACT = False
