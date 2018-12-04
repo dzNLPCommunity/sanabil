@@ -46,10 +46,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 
 ]
-
 
 ROOT_URLCONF = 'Sanabil.urls'
 
@@ -140,6 +140,5 @@ DEBUG_TOOLBAR_CONFIG = {
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 #JET THEME CONFIG
-JET_SIDE_MENU_COMPACT = True
-
+JET_SIDE_MENU_COMPACT = False
 SECURE_SSL_REDIRECT = not DEBUG
