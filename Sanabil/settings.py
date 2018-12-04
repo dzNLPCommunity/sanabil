@@ -128,6 +128,7 @@ SASS_PROCESSOR_INCLUDE_FILE_PATTERN = r'^.+\.scss$'
 SASS_PROCESSOR_INCLUDE_DIRS = [
     os.path.join(BASE_DIR, 'base/static/css/scss'),
 ]
+print(BASE_DIR)
 
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
