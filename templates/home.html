@@ -122,12 +122,10 @@
 	setChart(data);
 	},
 	error: function (error) {
-	console.log("error", error);
 	}
 	});
 
 	function setChart(data) {
-	console.log(data);
 	$('#totale').html(data.numbers.totale);
 	$('#familles').html(data.numbers.familles);
 	$('#enfants').html(data.numbers.enfants);
@@ -154,8 +152,8 @@
 	labels: data.age_data.labels,
 	datasets: [{
 	label: "Les nécessiteux par age",
-	backgroundColor: ['olive', 'lightsalmon', 'lightsanabil-color', 'lightcoral'],
-	borderColor: ['olive', 'lightsalmon', 'lightsanabil-color', 'lightcoral'],
+	backgroundColor: ['olive', 'lightsalmon', 'teal', 'lightcoral'],
+	borderColor: ['olive', 'lightsalmon', 'teal', 'lightcoral'],
 	data: data.age_data.data,
 	}]
 	},

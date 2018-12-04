@@ -1,3 +1,6 @@
+.contact-form {
+  padding-bottom: 10px !important;
+}
 .contact-infos {
   margin-top: 3%;
   .row {
@@ -12,7 +15,7 @@
   .navigator > .item:nth-child(n+2), .contact-button {
     display: none !important;
   }
-  .ui.grid > [class*="seven wide"].column{
+  .ui.grid > [class*="seven wide"].column {
     width: 70% !important;
   }
   .contact-infos {
