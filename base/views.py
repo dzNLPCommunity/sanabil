@@ -14,7 +14,7 @@ def contact_view(request):
             from_email = form.cleaned_data['Votre_email']
             message = form.cleaned_data['Votre_message']
             try:
-                send_mail(subject, message, from_email, ['fatimazahrakechida@gmail.com'])
+                send_mail(subject, message, from_email, ['dz.sanabil@gmail.com'])
             except BadHeaderError:
                 messages.error(request, 'Une erreur s\'est produite veuillez réessayer ultérieurement!')
             messages.success(request, 'Votre email a été envoyé avec succès!')
