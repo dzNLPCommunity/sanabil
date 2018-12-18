@@ -34,8 +34,8 @@ INSTALLED_APPS = [
     'staff',
     'charity',
     'base',
-    'debug_toolbar',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -45,10 +45,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 
 ]
+
+if DEBUG:
+    INSTALLED_APPS += ['debug_toolbar']
+    MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
 
 ROOT_URLCONF = 'Sanabil.urls'
 
@@ -131,12 +134,18 @@ STATICFILES_FINDERS = [
 
 def show_toolbar(request):
     return True
+if DEBUG:
+    DEBUG_TOOLBAR_CONFIG = {
+        "SHOW_TOOLBAR_CALLBACK" : show_toolbar,
+    }
 
-DEBUG_TOOLBAR_CONFIG = {
-    "SHOW_TOOLBAR_CALLBACK" : show_toolbar,
-}
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = os.environ.get('SENDGRID_USERNAME', False)
+EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_PASSWORD', False)
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 #JET THEME CONFIG
 JET_SIDE_MENU_COMPACT = False
