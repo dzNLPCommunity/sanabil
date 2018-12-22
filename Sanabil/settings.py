@@ -2,7 +2,10 @@ import os
 import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DEBUG = os.environ.get('DEBUG', False)
+
+
+
+DEBUG = bool(os.environ.get('DEBUG', 0))
 
 
 ALLOWED_HOSTS = ['.sanabil.org']
@@ -138,7 +141,9 @@ STATICFILES_FINDERS = [
 ]
 
 def show_toolbar(request):
-    return True
+    return False
+
+
 if DEBUG:
     DEBUG_TOOLBAR_CONFIG = {
         "SHOW_TOOLBAR_CALLBACK" : show_toolbar,
