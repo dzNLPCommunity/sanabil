@@ -9,6 +9,8 @@ ALLOWED_HOSTS = ['.sanabil.org']
 
 ADMINS = (('Assem Chelli', 'assem.ch@gmail.com'), )
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_USER = os.environ.get('SENDGRID_USERNAME', False)
 EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_PASSWORD', False)
@@ -105,7 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
-LANGUAGE_CODE = 'fr-fr'
+LANGUAGE_CODE = 'fr-FR'
 
 TIME_ZONE = 'UTC'
 
@@ -128,7 +130,6 @@ SASS_PROCESSOR_INCLUDE_FILE_PATTERN = r'^.+\.scss$'
 SASS_PROCESSOR_INCLUDE_DIRS = [
     os.path.join(BASE_DIR, 'base/static/css/scss'),
 ]
-print(BASE_DIR)
 
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -138,12 +139,11 @@ STATICFILES_FINDERS = [
 
 def show_toolbar(request):
     return True
+if DEBUG:
+    DEBUG_TOOLBAR_CONFIG = {
+        "SHOW_TOOLBAR_CALLBACK" : show_toolbar,
+    }
 
-DEBUG_TOOLBAR_CONFIG = {
-    "SHOW_TOOLBAR_CALLBACK" : show_toolbar,
-}
-
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 #JET THEME CONFIG
 JET_SIDE_MENU_COMPACT = False
