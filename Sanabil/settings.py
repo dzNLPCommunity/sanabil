@@ -7,7 +7,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DEBUG = bool(os.environ.get('DEBUG', 0))
 
-
 ALLOWED_HOSTS = ['.sanabil.org']
 
 ADMINS = (('Assem Chelli', 'assem.ch@gmail.com'), )
@@ -22,7 +21,7 @@ EMAIL_USE_TLS = True
 
 if DEBUG:
     SECRET_KEY = '1tx6ee0l)64l68tl*6akdesms%uz8noqcrarl-2s1_z*^bgw(r'
-    ALLOWED_HOSTS += ['127.0.0.1','sanabil.herokuapp.com']
+    ALLOWED_HOSTS += ['localhost','127.0.0.1','sanabil.herokuapp.com']
 else:
     SECRET_KEY = os.environ['SECRET_KEY']
 
