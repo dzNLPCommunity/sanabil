@@ -1,25 +1,30 @@
 import os
 import dj_database_url
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 
+DEBUG = bool(os.environ.get('DEBUG', 1))
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', False)
+ALLOWED_HOSTS = ['.sanabil.org']
 
+ADMINS = (('Assem Chelli', 'assem.ch@gmail.com'), )
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = os.environ.get('SENDGRID_USERNAME', False)
+EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_PASSWORD', False)
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 if DEBUG:
     SECRET_KEY = '1tx6ee0l)64l68tl*6akdesms%uz8noqcrarl-2s1_z*^bgw(r'
+    ALLOWED_HOSTS += ['localhost','127.0.0.1','sanabil.herokuapp.com']
 else:
-    SECRET_KEY = os.environ['SECRET_KEY']
+    SECRET_KEY = '1tx6ee0l)64l68tl*6akdesms%uz8noqcrarl-2s1_z*^bgw(r'
 
-ALLOWED_HOSTS = ['127.0.0.1','sanabil.herokuapp.com', 'www.sanabil.org']
-
-
-# Application definition
 
 INSTALLED_APPS = [
     'jet',
@@ -33,8 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'staff',
     'charity',
-    'base',
+    'base'
 ]
+
 
 
 MIDDLEWARE = [
@@ -48,6 +54,7 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 
 ]
+
 
 if DEBUG:
     INSTALLED_APPS += ['debug_toolbar']
@@ -102,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
-LANGUAGE_CODE = 'fr-fr'
+LANGUAGE_CODE = 'fr-FR'
 
 TIME_ZONE = 'UTC'
 
@@ -119,7 +126,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, "static_files")
 STATIC_URL = '/static/'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 SASS_PROCESSOR_ENABLED = True
 SASS_PROCESSOR_INCLUDE_FILE_PATTERN = r'^.+\.scss$'
 SASS_PROCESSOR_INCLUDE_DIRS = [
@@ -133,19 +140,15 @@ STATICFILES_FINDERS = [
 ]
 
 def show_toolbar(request):
-    return True
+    return False
+
+
 if DEBUG:
     DEBUG_TOOLBAR_CONFIG = {
         "SHOW_TOOLBAR_CALLBACK" : show_toolbar,
     }
 
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = os.environ.get('SENDGRID_USERNAME', False)
-EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_PASSWORD', False)
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
 
 #JET THEME CONFIG
 JET_SIDE_MENU_COMPACT = False
+SECURE_SSL_REDIRECT = not DEBUG

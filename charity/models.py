@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
 from datetime import date
 from base.models import Commune, NiveauScolaire, SituationFamiliale, SituationProfessionelle, CentreType, \
     DonType, DonneurType
@@ -14,16 +15,29 @@ class Famille(models.Model):
         return "{}".format(self.nom)
 
 
+class Centre(models.Model):
+    nom = models.CharField(max_length=500)
+    address = models.TextField()
+    type = models.ForeignKey(CentreType, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "{} ({})".format(self.nom, self.type)
+
+
 class Necessiteux(models.Model):
     association = models.ForeignKey(Association, null=True, on_delete=models.SET_NULL, related_name="members")
     nom = models.CharField(max_length=500)
-    prenom = models.CharField(max_length=100)
-    date_de_naissance = models.DateField(null=True)
+    prenom = models.CharField('prénom', max_length=100)
+    date_de_naissance = models.DateField(blank=True, null=True)
     sexe = models.CharField(max_length=1, choices=[("F", "Female"), ("M", "Male")])
     niveau_scolaire = models.ForeignKey(NiveauScolaire, on_delete=models.SET_NULL, blank=True, null=True)
-    tel = models.CharField(max_length=20, blank=True, null=True)
-    pointure = models.IntegerField(null=True)  # TODO validation 20 - 50
-    taille = models.CharField(max_length=100, null=True)
+    tel = models.CharField('tél', max_length=20, blank=True, null=True)
+    pointure = models.IntegerField(blank=True, null=True, default=36,
+                                   validators=[
+                                       MaxValueValidator(50),
+                                       MinValueValidator(20)
+                                   ])
+    taille = models.CharField(max_length=100, blank=True, null=True)
     situation_familiale = models.ForeignKey(SituationFamiliale, on_delete=models.SET_NULL, null=True)
     situation_professionelle = models.ForeignKey(SituationProfessionelle, on_delete=models.SET_NULL, null=True)
     est_orphelin = models.BooleanField()
@@ -31,7 +45,9 @@ class Necessiteux(models.Model):
                                                choices=[(0, '0'), (1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')])
     appartient_famille = models.ForeignKey(Famille, on_delete=models.SET_NULL, blank=True, null=True)
     represent_famille = models.BooleanField(default=False)
+    appartient_centre = models.ForeignKey(Centre, on_delete=models.SET_NULL, blank=True, null=True)
     archivé = models.BooleanField(default=False)
+    est_permanent = models.BooleanField(default=False)
 
     def get_need(self):
         needs_qs = Besoin.objects.filter(necessiteux=self.id).values_list('nom', flat=True)
@@ -40,7 +56,10 @@ class Necessiteux(models.Model):
     def get_age(self):
         today = date.today()
         date_naissance = self.date_de_naissance
-        return today.year - date_naissance.year - ((today.month, today.day) < (date_naissance.month, date_naissance.day))
+        if date_naissance is None:
+            return None
+        return today.year - date_naissance.year - (
+                (today.month, today.day) < (date_naissance.month, date_naissance.day))
 
     class Meta:
         verbose_name_plural = "Nécessiteux"
@@ -48,15 +67,6 @@ class Necessiteux(models.Model):
 
     def __str__(self):
         return "{} {}".format(self.nom, self.prenom)
-
-
-class Centre(models.Model):
-    nom = models.CharField(max_length=500)
-    address = models.TextField()
-    type = models.ForeignKey(CentreType, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return "{} ({})".format(self.nom, self.type)
 
 
 class Besoin(models.Model):
