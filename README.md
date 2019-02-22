@@ -46,7 +46,7 @@ And open in browser: [http://127.0.0.1:8000/](http://127.0.0.1:8000/) to check t
 
 ## Get involved!
 We are happy to receive bug reports, fixes,  or any other enhancements.
-Please if you find any report bugs via the [github issue tracker](https://github.com/assem-ch/sanabil2/issues).
+Please if you find any report bugs via the [github issue tracker](https://github.com/assem-ch/sanabil/issues).
 
 
 
