@@ -30,20 +30,16 @@ class Necessiteux(models.Model):
     prenom = models.CharField('prénom', max_length=100)
     jeune_fille = models.CharField('Nom de jeune fille', max_length=100, blank=True, null=True)
     part_de = models.CharField('De la part de', max_length=100, blank=True, null=True)
-    nin = models.CharField('Numéro pièce d’identité', max_length=9, blank=True, null=True,
-        validators=[
-            RegexValidator(
-                regex='\d{9}$',
-                message='Champ invalide',
-            ),
-        ]
-    )
+    nin = models.CharField('Numéro pièce d’identité', max_length=9, blank=True, null=True)
     date_de_naissance = models.DateField(blank=True, null=True)
     sexe = models.CharField(max_length=1, choices=[("F", "Female"), ("M", "Male")])
     type = models.SmallIntegerField(default=0,
                                     choices=[(0, 'Permanent'), (1, 'Temporaire'), (2, 'Voyageur en détresse')])
     niveau_scolaire = models.ForeignKey(NiveauScolaire, on_delete=models.SET_NULL, blank=True, null=True)
-    tel = models.CharField('tél', max_length=20, blank=True, null=True)
+    tel = models.CharField('Téléphone 1', max_length=20, blank=True, null=True)
+    tel_2 = models.CharField('Téléphone 2', max_length=20, blank=True, null=True)
+    pointure = models.IntegerField(null=True)  # TODO validation 20 - 50
+    taille = models.CharField(max_length=100, null=True)
     pointure = models.IntegerField(blank=True, null=True, default=36,
                                    validators=[
                                        MaxValueValidator(50),
@@ -52,13 +48,16 @@ class Necessiteux(models.Model):
     taille = models.CharField(max_length=100, blank=True, null=True)
     situation_familiale = models.ForeignKey(SituationFamiliale, on_delete=models.SET_NULL, null=True)
     situation_professionelle = models.ForeignKey(SituationProfessionelle, on_delete=models.SET_NULL, null=True)
+    health_state =  models.SmallIntegerField('état de santé', default=0,
+                                               choices=[(0, 'En bonne santé'), (1, 'Malade'), (2, 'Maladie chronique')])
     est_orphelin = models.BooleanField()
     degré_nécessite = models.SmallIntegerField(default=0,
                                                choices=[(0, '0'), (1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')])
-    appartient_famille = models.ForeignKey(Famille, on_delete=models.SET_NULL, blank=True, null=True)
-    represent_famille = models.BooleanField(default=False)
-    appartient_centre = models.ForeignKey(Centre, on_delete=models.SET_NULL, blank=True, null=True)
+    appartient_famille = models.ForeignKey(Famille, verbose_name='appartient-il à une famille?', on_delete=models.SET_NULL, blank=True, null=True)
+    represent_famille = models.BooleanField('représente-il une famille?', default=False)
     archivé = models.BooleanField(default=False)
+    investigated = models.BooleanField('investigation effectuée?', default=False)
+    other_infos = models.TextField('informations supplémentaires',  blank=True, null=True)
 
     def get_need(self):
         needs_qs = Besoin.objects.filter(necessiteux=self.id).values_list('nom', flat=True)
@@ -94,7 +93,7 @@ class Besoin(models.Model):
     date_planification = models.DateField(blank=True, null=True)
     date_remise_don = models.DateField(blank=True, null=True)
     est_satisfait = models.BooleanField(default=False)
-    délivré_par = models.TextField(max_length=100, blank=True, null=True)
+    délivré_par = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self):
         return "{}. {}".format(self.id, self.nom)

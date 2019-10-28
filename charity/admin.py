@@ -1,7 +1,6 @@
-from django.apps import apps
 from django.contrib import admin
 from import_export import resources
-from import_export.admin import ExportActionModelAdmin, ExportMixin
+from import_export.admin import ExportActionModelAdmin
 from import_export.formats import base_formats
 from charity.models import Famille, Necessiteux, Centre, Besoin, Donneur, AideRecu
 
@@ -95,3 +94,6 @@ class AideRecuAdmin(admin.ModelAdmin):
     list_display = ["__str__", "donneur", "association"]
     date_hierarchy = "date_reception"
     list_filter = ["type", "association"]
+
+
+
