@@ -57,6 +57,7 @@ class Necessiteux(models.Model):
     represent_famille = models.BooleanField('représente-il une famille?', default=False)
     archivé = models.BooleanField(default=False)
     investigated = models.BooleanField('investigation effectuée?', default=False)
+    address = models.TextField('adresse postale',  blank=True, null=True)
     other_infos = models.TextField('informations supplémentaires',  blank=True, null=True)
 
     def get_need(self):
