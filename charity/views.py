@@ -66,13 +66,18 @@ class NecessiteuxData(APIView):
         vieux = age_range(65, 150)
         age_counts = [0, 0, 0, 0]
         enfants_count = 0
+        labels = ["Enfants", "Adolescents", "Adultes", "Vieux"]
         if qs.count() > 0:
             age_qs = qs.values('date_de_naissance').annotate(enfants=enfants, ados=ados, adults=adults, vieux=vieux)
             age_sums = age_qs.aggregate(enfants_sum=Sum('enfants'), ados_sum=Sum('ados'), adults_sum=Sum('adults'), vieux_sum=Sum('vieux'))
             age_counts = [age_sums['enfants_sum'], age_sums['ados_sum'], age_sums['adults_sum'], age_sums['vieux_sum']]
             enfants_count = age_counts[0]
+            unknown_age_count = qs.filter(date_de_naissance__isnull=True).count()
+            if unknown_age_count > 0:
+                age_counts.append(unknown_age_count)
+                labels.append('Âge inconnu')
         age_data = {
-            "labels": ["Enfants", "Adolescents", "Adultes", "Vieux"],
+            "labels": labels,
             "data": age_counts,
         }
         numbers = {'totale': qs.count(), 'familles': qsFamille.count(),

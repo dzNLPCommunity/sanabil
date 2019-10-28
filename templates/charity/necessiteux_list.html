@@ -31,10 +31,18 @@
 							{% endif %}
 						</td>
 						<td>
-							{{ needy.get_age }}
+							{% if needy.get_age == None %}
+								Âge inconnu
+							{% else %}
+								{{ needy.get_age }}
+							{% endif %}
 						</td>
 						<td>
-							{{ needy.taille }}
+							{% if needy.taille == None %}
+								Taille inconnue
+							{% else %}
+								{{ needy.taille }}
+							{% endif %}
 						</td>
 						<td>
 							{% if needy.get_need %}
