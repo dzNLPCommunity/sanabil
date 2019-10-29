@@ -35,7 +35,7 @@ def helppage(request):
 class NecessiteuxListView(ListView):
     model = Necessiteux
     ordering = ['-id']
-    paginate_by = 10
+    # paginate_by = 10
 
 
 def age_range(min_age, max_age):
@@ -88,7 +88,7 @@ class NecessiteuxData(APIView):
 
 class AideRecuListView(ListView):
     model = AideRecu
-    paginate_by = 10
+    #paginate_by = 10
 
 
 class BesoinListView(ListView):
@@ -98,4 +98,4 @@ class BesoinListView(ListView):
     def get_satisfied_needs(self):
         return self.model.objects.get(est_satisfait=True)
 
-    paginate_by = 10
+    #paginate_by = 10

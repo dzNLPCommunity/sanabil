@@ -1,8 +1,14 @@
+from django import forms
 from django.contrib import messages
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from .forms import ContactForm
+
+class ContactForm(forms.Form):
+    Votre_email = forms.EmailField(required=True)
+    Sujet = forms.CharField(required=True)
+    Votre_message = forms.CharField(widget=forms.Textarea, required=True)
 
 def contact_view(request):
     if request.method == 'GET':

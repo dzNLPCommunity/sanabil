@@ -19,11 +19,11 @@ EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_PASSWORD', False)
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
+SECRET_KEY = os.environ.get('SECRET_KEY','1tx6ee0l)64l68tl*6akdesms%uz8noqcrarl-2s1_z*^bgw(r')
+
 if DEBUG:
-    SECRET_KEY = '1tx6ee0l)64l68tl*6akdesms%uz8noqcrarl-2s1_z*^bgw(r'
     ALLOWED_HOSTS += ['localhost','127.0.0.1','sanabil.herokuapp.com']
-else:
-    SECRET_KEY = os.environ['SECRET_KEY']
+
 
 
 INSTALLED_APPS = [
@@ -150,5 +150,5 @@ if DEBUG:
 
 
 #JET THEME CONFIG
-JET_SIDE_MENU_COMPACT = False
+JET_SIDE_MENU_COMPACT = True
 SECURE_SSL_REDIRECT = not DEBUG
