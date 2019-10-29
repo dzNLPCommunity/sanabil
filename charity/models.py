@@ -82,7 +82,7 @@ class Necessiteux(models.Model):
 
 class Besoin(models.Model):
     association = models.ForeignKey(Association, on_delete=models.CASCADE)
-    necessiteux = models.ManyToManyField(Necessiteux, null=True, blank=True)
+    necessiteux = models.ManyToManyField(Necessiteux, blank=True)
     centre = models.ForeignKey(Centre, on_delete=models.CASCADE, null=True, blank=True)
     nom = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
